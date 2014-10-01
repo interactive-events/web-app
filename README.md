@@ -1,5 +1,5 @@
 # Web app
 =======
 
-npm install
+npm install <br />
 bower install
