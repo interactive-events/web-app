@@ -12,6 +12,8 @@ deploy:
   secret_access_key:
     secure: C+3ywEi8vlrD6mwPMH8wCk1nNSuUiiZ9grjx/SOY/04u7o0yS7YaMudCHsOi6Kgq+Qqj9IeuUhD1zrpvRFxosAB8MUfV19bmOOOxTmsUZPcosRu8QoXGv1nfgqcBurelUgN3jyDTugc5JIJilWykkHltXle0KE2kl9oX6jsSXnw=
   bucket: interactive-events-web-app
+  skip_cleanup: true
+  region: eu-west-1
   local-dir: dist
   acl: !ruby/string:HighLine::String public_read
   on:
