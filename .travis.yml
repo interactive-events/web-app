@@ -1,7 +1,17 @@
 language: node_js
 node_js:
-  - '0.10'
+- '0.10'
 before_script:
-  - 'gem install compass'
-  - 'npm install -g bower grunt-cli'
-  - 'bower install'
+- gem install compass
+- npm install -g bower grunt-cli
+- bower install
+deploy:
+  provider: s3
+  access_key_id: AKIAJ72ZSZTBGRSNIXLA
+  secret_access_key:
+    secure: C+3ywEi8vlrD6mwPMH8wCk1nNSuUiiZ9grjx/SOY/04u7o0yS7YaMudCHsOi6Kgq+Qqj9IeuUhD1zrpvRFxosAB8MUfV19bmOOOxTmsUZPcosRu8QoXGv1nfgqcBurelUgN3jyDTugc5JIJilWykkHltXle0KE2kl9oX6jsSXnw=
+  bucket: interactive-events-web-app
+  local-dir: dist
+  acl: !ruby/string:HighLine::String public_read
+  on:
+    branch: release
