@@ -1,6 +1,10 @@
 {
   "name": "webapp",
   "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/interactive-events/web-app.git"
+  },
   "dependencies": {},
   "devDependencies": {
     "grunt": "^0.4.1",
