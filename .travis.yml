@@ -5,6 +5,7 @@ before_script:
 - gem install compass
 - npm install -g bower grunt-cli
 - bower install
+- grunt build
 deploy:
   provider: s3
   access_key_id: AKIAJ72ZSZTBGRSNIXLA
