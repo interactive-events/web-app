@@ -2,9 +2,9 @@
 events: {{events}}
  </p>
 
-
+Search: <input ng-model="query">
  <ul>
-   <li ng-repeat="thing in eventsResponse.events">
+   <li ng-repeat="thing in eventsResponse.events | filter:query">
      {{thing.event.title}}
    </li>
  </ul>
