@@ -19,6 +19,9 @@ angular.module('ieventsWebApp')
 
     var baseEvents = Restangular.one('events');
 
+    $scope.eventsResponse  = baseEvents.get().$object;
+    console.log($scope.eventsResponse);
+
     /*baseEvents.get().then(function(response) {
       $scope.allEvents = response;
       console.log(response);
@@ -26,7 +29,6 @@ angular.module('ieventsWebApp')
 
     //$scope.oneEvent = Restangular.one('events', '1');
 
-    $scope.eventsResponse  = baseEvents.get().$object;
-    console.log($scope.eventsResponse);
+    // get events/id
 
   });
