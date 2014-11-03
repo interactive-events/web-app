@@ -174,6 +174,23 @@ module.exports = function (grunt) {
             sass: {
                 src: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
                 ignorePath: /(\.\.\/){1,2}bower_components\//
+            },
+            test: {
+                src: 'test/karma.conf.js',
+                devDependencies: true,
+                cwd: '.',
+                exclude: [/jquery/,/bootstrap/,/scenario/,/shim/,/json3/],
+                fileTypes: {
+                    js: {
+                        block: /(([\s\t]*)\/\/\s*bower:*(\S*))(\n|\r|.)*?(\/\/\s*endbower)/gi,
+                        detect: {
+                            js: /'(.*\.js)'/gi
+                        },
+                        replace: {
+                            js: '\'{{filePath}}\','
+                        }
+                    }
+                }
             }
         },
 
