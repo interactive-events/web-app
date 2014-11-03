@@ -14,27 +14,25 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="webAppApp">
+  <body ng-app="ieventsWebApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
     <div class="container">
-      <div class="header">
+      <div class="header" ng-controller="HeaderCtrl">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="#">Home</a></li>
-          <li><a ng-href="#">About</a></li>
-          <li><a ng-href="#">Contact</a></li>
+            <li ng-class="{ active: isActive('/')}"><a href="/">Dashboard</a></li>
+            <li ng-class="{ active: isActive('/events')}"><a ng-href="/events">Events</a></li>
+            <li ng-class="{ active: isActive('/people')}"><a ng-href="/people">People</a></li>
+            <li ng-class="{ active: isActive('/beacons')}"><a ng-href="/beacons">Beacons</a></li>
         </ul>
-        <h3 class="text-muted">webApp</h3>
+        <h3 class="text-muted">Web App</h3>
       </div>
 
-      <div ng-include="'views/main.html'" ng-controller="MainCtrl"></div>
+        <!-- Main content of the page -->
+        <div ng-view></div>
 
-      <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
     </div>
 
 
@@ -74,12 +72,19 @@
     <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/popover.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/home.js"></script>
+        <script src="scripts/controllers/dashboard.js"></script>
+        <script src="scripts/controllers/events.js"></script>
+        <script src="scripts/controllers/people.js"></script>
+        <script src="scripts/controllers/beacons.js"></script>
+        <script src="scripts/controllers/menu.js"></script>
+        <script src="scripts/controllers/header.js"></script>
         <!-- endbuild -->
 </body>
 </html>
