@@ -1,7 +1,10 @@
-<p>This is the events view. events: {{events}}</p>
+<p>This is the events view.
+events: {{events}}
+ </p>
 
-<ul>
-  <li ng-repeat="event in events">
-    {{event.title}}
-  </li>
-</ul>
+
+ <ul>
+   <li ng-repeat="thing in eventsResponse.events">
+     {{thing.event.title}}
+   </li>
+ </ul>

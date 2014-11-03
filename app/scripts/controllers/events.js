@@ -17,7 +17,7 @@ angular.module('ieventsWebApp')
 
     Restangular.setBaseUrl('http://private-582d6-interactiveevents.apiary-mock.com');
 
-    var baseEvents = Restangular.all('events');
+    var baseEvents = Restangular.one('events');
 
     /*baseEvents.get().then(function(response) {
       $scope.allEvents = response;
@@ -26,6 +26,7 @@ angular.module('ieventsWebApp')
 
     //$scope.oneEvent = Restangular.one('events', '1');
 
-    $scope.events = baseEvents.getList().$object;
+    $scope.eventsResponse  = baseEvents.get().$object;
+    console.log($scope.eventsResponse);
 
   });
