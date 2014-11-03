@@ -12,7 +12,8 @@ var webApp = angular
   .module('ieventsWebApp', [
     'ngAnimate',
     'ngTouch',
-    'ngRoute'
+    'ngRoute',
+    'restangular'
   ]);
 
 webApp.config(function($routeProvider, $locationProvider) {
