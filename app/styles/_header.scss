@@ -1,0 +1,15 @@
+header.main {
+  @include clearfix;
+  margin: 20px 0;
+
+  .logo {
+    float: left;
+    margin-right: 50px;
+
+     h3 {
+       margin: 0;
+       line-height: 52px;
+       color: $cs-orange;
+     }
+  }
+}

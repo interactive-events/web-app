@@ -20,15 +20,20 @@
     <![endif]-->
 
     <div class="container">
-      <div class="header" ng-controller="HeaderCtrl">
-        <ul class="nav nav-pills pull-right">
-            <li ng-class="{ active: isActive('/')}"><a href="/">Dashboard</a></li>
-            <li ng-class="{ active: isActive('/events')}"><a ng-href="/events">Events</a></li>
-            <li ng-class="{ active: isActive('/people')}"><a ng-href="/people">People</a></li>
-            <li ng-class="{ active: isActive('/beacons')}"><a ng-href="/beacons">Beacons</a></li>
-        </ul>
-        <h3 class="text-muted">Web App</h3>
-      </div>
+      <header class="main" ng-controller="HeaderCtrl">
+          <div class="logo">
+              <h3>Web App</h3>
+          </div>
+          <nav class="navbar navbar-default pull-left" role="navigation">
+              <ul class="nav navbar-nav">
+                  <li ng-class="{ active: isActive('/')}"><a href="/">Dashboard</a></li>
+                  <li ng-class="{ active: isActive('/events')}"><a ng-href="/events">Events</a></li>
+                  <li ng-class="{ active: isActive('/people')}"><a ng-href="/people">People</a></li>
+                  <li ng-class="{ active: isActive('/beacons')}"><a ng-href="/beacons">Beacons</a></li>
+              </ul>
+          </nav>
+
+      </header>
 
         <!-- Main content of the page -->
         <div ng-view></div>
@@ -73,6 +78,8 @@
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+    <script src="bower_components/restangular/dist/restangular.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
