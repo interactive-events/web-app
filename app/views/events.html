@@ -14,14 +14,16 @@
         <th>id</th>
         <th>Tittle</th>
         <th>Start time</th>
+        <th>Date</th>
         <th>Public</th>
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="obj in events">
+    <tr ng-repeat="obj in eventsResponse.events">
         <td>{{obj.event.id}}</td>
         <td>{{obj.event.title}}</td>
         <td>{{obj.event.startTime}}</td>
+        <td>{{obj.event.date}}</td>
         <td>{{obj.event.public}}</td>
     </tr>
     </tbody>
