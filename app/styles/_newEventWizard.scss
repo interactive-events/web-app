@@ -1,25 +1,19 @@
-/* form styling */
-#form-container                { margin-bottom:20px;
-  border-radius:5px; }
-#form-container .page-header   { margin:0; padding:30px;
-  border-top-left-radius:5px; border-top-right-radius:5px; }
+.new-event-wizard {
+  max-width: 480px;
+  margin: 0 auto;
 
-/* numbered buttons */
-#status-buttons                 {  }
-#status-buttons a               { display:inline-block; font-size:12px; margin-right:10px; text-align:center; text-transform:uppercase; }
-#status-buttons a:hover         { text-decoration:none; }
+  header {
+     text-align: center;
+     h1 { margin-bottom: 20px;}
+     margin-bottom: 20px;
+  }
 
-/* we will style the span as the circled number */
-#status-buttons span            { display:block; height:30px; margin:0 auto 10px; padding-top:5px; width:30px;
-  border-radius:50%; }
-
-/* active buttons turn light green-blue*/
-#status-buttons a.active span   { color: #fff; background:#00BC8C; }
+  .date-group {
+    position: relative;
+  }
+}
 
 
-/* style.css */
-/* ANIMATION STYLINGS
-============================================================================= */
 #signup-form            { position:relative; min-height:300px; overflow:hidden; padding:30px; }
 #form-views             { width:auto; }
 
@@ -70,4 +64,3 @@
   from    { -webkit-transform:translateX(200%); }
   to      { -webkit-transform: translateX(0); }
 }
-

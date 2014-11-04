@@ -2,7 +2,7 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Web App - Interactive Events</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -19,17 +19,17 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="container-fluid">
+    <div class="container">
       <header class="main" ng-controller="HeaderCtrl">
           <div class="logo">
               <h3>Web App</h3>
           </div>
           <nav class="navbar navbar-default pull-left" role="navigation">
               <ul class="nav navbar-nav">
-                  <li ng-class="{ active: isActive('/')}"><a href="/">Dashboard</a></li>
-                  <li ng-class="{ active: isActive('/events')}"><a ng-href="/events">Events</a></li>
-                  <li ng-class="{ active: isActive('/people')}"><a ng-href="/people">People</a></li>
-                  <li ng-class="{ active: isActive('/beacons')}"><a ng-href="/beacons">Beacons</a></li>
+                  <li ui-sref-active="active"><a ui-sref="dashboard">Dashboard</a></li>
+                  <li ui-sref-active="active"><a ui-sref="events">Events</a></li>
+                  <li ui-sref-active="active"><a ui-sref="people">People</a></li>
+                  <li ui-sref-active="active"><a ui-sref="beacons">Beacons</a></li>
               </ul>
           </nav>
           <!--<button type="button" class="btn btn-success pull-right">Register</button>
@@ -53,14 +53,14 @@
        ga('send', 'pageview');
     </script>
 
-    <!-- build:js(.) scripts/oldieshim.js -->
+    <!-- build:js(.) /scripts/oldieshim.js -->
     <!--[if lt IE 9]>
     <script src="/bower_components/es5-shim/es5-shim.js"></script>
     <script src="/bower_components/json3/lib/json3.js"></script>
     <![endif]-->
     <!-- endbuild -->
 
-    <!-- build:js(.) scripts/vendor.js -->
+    <!-- build:js(.) /scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/es5-shim/es5-shim.js"></script>
@@ -88,6 +88,7 @@
     <script src="/bower_components/highcharts/highcharts-more.js"></script>
     <script src="/bower_components/highcharts/modules/exporting.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

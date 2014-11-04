@@ -79,7 +79,7 @@ module.exports = function (grunt) {
                     middleware: function (connect) {
                         return [
                             modRewrite([
-                                '!\\.html|\\.js|\\.css|\\.png$ /index.html [L]'
+                                '!\\.ttf|\\.woff|\\.html|\\.js|\\.css|\\.png$ /index.html [L]'
                             ]),
                             connect.static('.tmp'),
                             connect().use(
@@ -170,13 +170,7 @@ module.exports = function (grunt) {
             app: {
                 src: ['<%= yeoman.app %>/index.html'],
                 ignorePath: /\.\.\//,
-                fileTypes: {
-                    html: {
-                        replace: {
-                            js: '<script src="/{{filePath}}"></script>'
-                        }
-                    }
-                }
+
             },
             sass: {
                 src: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],

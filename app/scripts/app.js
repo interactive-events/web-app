@@ -12,15 +12,16 @@ var webApp = angular
     .module('ieventsWebApp', [
         'ngAnimate',
         'ngTouch',
-        'ngRoute',
         'restangular',
         'highcharts-ng',
-        'ui.router'
+        'ui.router',
+        'ui.bootstrap'
     ]);
 
 webApp.config(function ($urlRouterProvider, $locationProvider, $stateProvider) {
     // Enable HTML5 pushstate
     $locationProvider.html5Mode(true);
+
     $stateProvider.
         state('home', {
             url: '/home',
@@ -47,31 +48,26 @@ webApp.config(function ($urlRouterProvider, $locationProvider, $stateProvider) {
             templateUrl: '/views/dashboard.html',
             controller: 'DashboardCtrl'
         })
-        .state('newevent', {
+        .state('new-event', {
             url: '/events/new',
             templateUrl: '/views/newevent.html',
             controller: 'NeweventCtrl'
         })
-
         // nested states
         // each of these sections will have their own view
-        // url will be nested (/form/profile)
-        .state('newevent.profile', {
-            url: '/profile',
-            templateUrl: '/views/form-profile.html'
+        // url will be nested (/events/new/1)
+        .state('new-event.step1', {
+            url: '/1',
+            templateUrl: '/views/new-event-step1.html'
         })
-
-        // url will be /form/interests
-        .state('newevent.interests', {
-            url: '/interests',
-            templateUrl: '/views/form-interests.html'
+        .state('new-event.step2', {
+            url: '/2',
+            templateUrl: '/views/new-event-step2.html'
         })
-
-        // url will be /form/payment
-        .state('newevent.payment', {
-            url: '/payment',
-            templateUrl: '/views/form-payment.html'
+        .state('new-event.step3', {
+            url: '/3',
+            templateUrl: '/views/new-event-step3.html'
         });
 
-        $urlRouterProvider.otherwise('/404');
+    $urlRouterProvider.otherwise('/404');
 });

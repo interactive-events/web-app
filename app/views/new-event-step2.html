@@ -1,0 +1,14 @@
+<!-- form-interests.html -->
+<label ng-init="formData.activities = [{id: 'activity_1'}]">Add some activities</label>
+<div class="form-group" data-ng-repeat="activity in formData.activities">
+    <select id="beacon" ng-model="activity.type" class="form-control" ng-options="activityType.name for activityType in activityTypes">
+        <option value="">-- Choose an activity --</option>
+    </select>
+</div>
+        <div class="form-group">
+            <a class="btn-block btn btn-success" ng-click="addNewChoice()">Add another activity</a>
+        </div>
+
+<a ui-sref="new-event.step3" class="btn pull-right btn-primary">
+    Next <span class="glyphicon glyphicon-arrow-right"></span>
+</a>
