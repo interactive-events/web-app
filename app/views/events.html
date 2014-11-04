@@ -1,10 +1,28 @@
-<p>This is the events view.
-events: {{events}}
- </p>
-
-Search: <input ng-model="query">
- <ul>
-   <li ng-repeat="thing in eventsResponse.events | filter:query">
-     {{thing.event.title}}
-   </li>
- </ul>
+<header class="section">
+    <h1>Events</h1>
+    <div class="actions">
+        <button class="btn btn-success add">New event</button>
+        <div class="btn-group">
+            <button type="button" class="btn btn-default">Upcoming</button>
+            <button type="button" class="btn btn-default">Old</button>
+        </div>
+    </div>
+</header>
+<table class="table">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>Tittle</th>
+        <th>Start time</th>
+        <th>Public</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="obj in events">
+        <td>{{obj.event.id}}</td>
+        <td>{{obj.event.title}}</td>
+        <td>{{obj.event.startTime}}</td>
+        <td>{{obj.event.public}}</td>
+    </tr>
+    </tbody>
+</table>

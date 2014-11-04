@@ -1,6 +1,31 @@
-<h1>Dashboard</h1>
-<ul>
-    <li ng-repeat="thing in awesomeThings">
-        {{thing}}
-    </li>
-</ul>
+<header class="section">
+    <h1>Dashboard</h1>
+
+    <div class="actions">
+        <button class="btn btn-success add">Add widget</button>
+        <div class="btn-group">
+            <button type="button" class="btn btn-default">2 columns</button>
+            <button type="button" class="btn btn-default">3 columns</button>
+        </div>
+    </div>
+</header>
+<div class="row">
+    <div class="col-xs-2">
+        <div class="btn-group-vertical">
+            <a class="btn btn-default">New event</a>
+            <a class="btn btn-default">Add beacon</a>
+            <a class="btn btn-default">Add person</a>
+            <a class="btn btn-default">Create group</a>
+        </div>
+    </div>
+    <div class="col-xs-10">
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="widget"><highchart id="chart1" config="chart1"></highchart></div>
+            </div>
+            <div class="col-xs-6">
+                <div class="widget"><highchart id="chart2" config="chart2"></highchart></div>
+            </div>
+        </div>
+    </div>
+</div>

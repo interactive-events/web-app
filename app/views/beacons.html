@@ -1,1 +1,26 @@
-<p>This is the beacons view.</p>
+<header class="section">
+    <h1>Beacons</h1>
+    <div class="actions">
+        <button class="btn btn-success add">New beacon</button>
+        <div class="btn-group">
+            <button type="button" class="btn btn-default">Active</button>
+            <button type="button" class="btn btn-default">Inactive</button>
+        </div>
+    </div>
+</header>
+<table class="table">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>Name</th>
+        <th>UUID</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="obj in beacons">
+        <td>{{obj.beacon.id}}</td>
+        <td>{{obj.beacon.name}}</td>
+        <td>{{obj.beacon.uuid}}</td>
+    </tr>
+    </tbody>
+</table>
