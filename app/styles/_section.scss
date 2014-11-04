@@ -1,4 +1,26 @@
 header.section {
   margin-bottom: 19px;
   border-bottom: 1px solid #ddd;
+  overflow: hidden;
+
+  h1 {
+    float: left;
+    margin: 15px 0;
+  }
+
+  .actions {
+    padding-top: 15px;
+    float: right;
+    overflow: hiddem;
+
+    > * {
+      float: right;
+    }
+
+    .add {
+      margin-left: 10px;
+    }
+  }
+
 }
+

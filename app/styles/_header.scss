@@ -1,6 +1,6 @@
 header.main {
   @include clearfix;
-  margin: 20px 0;
+  margin: 20px 0 40px;
 
   .logo {
     float: left;
@@ -14,5 +14,15 @@ header.main {
   }
   .login-btn {
     margin-right: 10px;
+  }
+
+  .btn { margin-top: 10px !important; }
+
+  .navbar { margin-bottom: 0; }
+
+  .welcome {
+    line-height: 52px;
+    padding-right: 10px;
+    margin-bottom: 0;
   }
 }
