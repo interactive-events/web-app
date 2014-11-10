@@ -20,7 +20,8 @@ angular.module('ieventsWebApp')
 
         var baseEvents = Restangular.one('events');
 
-        $scope.eventsResponse = baseEvents.get().$object;
+        $scope.eventsPromise = baseEvents.get();
+        $scope.eventsResponse = $scope.eventsPromise.$object;
 
         /*baseEvents.get().then(function(response) {
          $scope.allEvents = response;

@@ -15,7 +15,8 @@ var webApp = angular
         'restangular',
         'highcharts-ng',
         'ui.router',
-        'ui.bootstrap'
+        'ui.bootstrap',
+        'cgBusy'
     ]);
 
 webApp.config(function ($urlRouterProvider, $locationProvider, $stateProvider) {
@@ -24,7 +25,7 @@ webApp.config(function ($urlRouterProvider, $locationProvider, $stateProvider) {
 
     $stateProvider.
         state('home', {
-            url: '/home',
+            url: '/',
             templateUrl: '/views/home.html',
             controller: 'HomeCtrl'
         }).
@@ -43,14 +44,19 @@ webApp.config(function ($urlRouterProvider, $locationProvider, $stateProvider) {
             templateUrl: '/views/events.html',
             controller: 'EventsCtrl'
         })
+        .state('single-event', {
+            url: '/events/:eventId',
+            templateUrl: '/views/single-event.html',
+            controller: 'SingleEventCtrl'
+        })
         .state('dashboard', {
-            url: '/',
+            url: '/dashboard',
             templateUrl: '/views/dashboard.html',
             controller: 'DashboardCtrl'
         })
         .state('new-event', {
             url: '/events/new',
-            templateUrl: '/views/newevent.html',
+            templateUrl: '/views/new-event/new-event.html',
             controller: 'NeweventCtrl'
         })
         // nested states
@@ -58,16 +64,27 @@ webApp.config(function ($urlRouterProvider, $locationProvider, $stateProvider) {
         // url will be nested (/events/new/1)
         .state('new-event.step1', {
             url: '/1',
-            templateUrl: '/views/new-event-step1.html'
+            templateUrl: '/views/new-event/step1.html'
         })
         .state('new-event.step2', {
             url: '/2',
-            templateUrl: '/views/new-event-step2.html'
+            templateUrl: '/views/new-event/step2.html'
         })
         .state('new-event.step3', {
             url: '/3',
-            templateUrl: '/views/new-event-step3.html'
+            templateUrl: '/views/new-event/step3.html'
         });
 
     $urlRouterProvider.otherwise('/404');
+});
+
+webApp.run(function($rootScope, $state) {
+    $rootScope.isLoggedIn = true;
+    $rootScope.$state = $state;
+});
+
+webApp.filter('stateToClasses', function() {
+    return function(input) {
+        return input.replace('.', ' ');
+    }
 });

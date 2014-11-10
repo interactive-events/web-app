@@ -1,5 +1,6 @@
 <header class="section">
     <h1>Events</h1>
+    <span class="ongoing-event"><span>1 event in progress: An awesome event</span> <a ng-href="/events/123">Go to event</a></span>
     <div class="actions">
         <a ui-sref="new-event.step1" class="btn btn-success add">New event</a>
         <div class="btn-group">
@@ -8,7 +9,7 @@
         </div>
     </div>
 </header>
-<table class="table">
+<table class="table" cg-busy="eventsPromise">
     <thead>
     <tr>
         <th>id</th>

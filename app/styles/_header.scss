@@ -1,10 +1,14 @@
 header.main {
   @include clearfix;
-  margin: 20px 0 40px;
+  padding: 30px 0;
+  border-bottom: 1px solid #ececec;
+  margin-bottom: 30px;
 
   .logo {
     float: left;
     margin-right: 50px;
+    position: relative;
+    top: -5px;
 
      h3 {
        margin: 0;
@@ -15,8 +19,6 @@ header.main {
   .login-btn {
     margin-right: 10px;
   }
-
-  .btn { margin-top: 10px !important; }
 
   .navbar { margin-bottom: 0; }
 

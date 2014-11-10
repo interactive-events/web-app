@@ -10,11 +10,12 @@ $brand-primary: $cs-blue;
 
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
-@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
 // endbower
 
 @import "header";
 @import "section";
 @import "dashboard";
+@import "events";
 @import "newEventWizard";
 @import "misc";
