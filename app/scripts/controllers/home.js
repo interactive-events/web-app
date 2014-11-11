@@ -8,7 +8,7 @@
  * Controller of the ieventsWebApp
  */
 angular.module('ieventsWebApp')
-  .controller('HomeCtrl', function ($scope, Restangular) {
+  .controller('HomeCtrl', function ($scope, Restangular, $rootScope) {
         Restangular.setBaseUrl('http://oauthprovider/lockdin/');
         var baseToken = Restangular.all('token');
 
@@ -27,5 +27,7 @@ angular.module('ieventsWebApp')
                 console.log("Token request ERROR");
             });
         }
+
+        $rootScope.isLoggedIn = false;
 
   });

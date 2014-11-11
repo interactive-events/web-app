@@ -14,8 +14,17 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 // endbower
 
 @import "header";
+@import "home";
 @import "section";
 @import "dashboard";
 @import "events";
 @import "newEventWizard";
 @import "misc";
+
+
+//TODO Move to separate typography file
+h1, h2, h3 h4, h5, h6 {
+  font-family: Lato;
+  font-weight: bold;
+  text-rendering: optimizeLegibility;
+}
