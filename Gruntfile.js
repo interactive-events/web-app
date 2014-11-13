@@ -180,7 +180,7 @@ module.exports = function (grunt) {
                 src: 'test/karma.conf.js',
                 devDependencies: true,
                 cwd: '.',
-                exclude: [/jquery/,/javascripts\/bootstrap/,/scenario/,/shim/,/json3/],
+                exclude: [/javascripts\/bootstrap/,/scenario/,/shim/,/json3/],
                 fileTypes: {
                     js: {
                         block: /(([\s\t]*)\/\/\s*bower:*(\S*))(\n|\r|.)*?(\/\/\s*endbower)/gi,

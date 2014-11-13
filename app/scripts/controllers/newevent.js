@@ -2,10 +2,10 @@
 
 /**
  * @ngdoc function
- * @name webAppApp.controller:NeweventCtrl
+ * @name ieventsWebApp.controller:NeweventCtrl
  * @description
  * # NeweventCtrl
- * Controller of the webAppApp
+ * Controller of the ieventsWebApp
  */
 angular.module('ieventsWebApp')
     .controller('NeweventCtrl', function ($scope, $state) {

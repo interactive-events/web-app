@@ -2,10 +2,10 @@
 
 /**
  * @ngdoc function
- * @name webAppApp.controller:LoginCtrl
+ * @name ieventsWebApp.controller:LoginCtrl
  * @description
  * # LoginCtrl
- * Controller of the webAppApp
+ * Controller of the ieventsWebApp
  */
 angular.module('ieventsWebApp')
     .controller('RegisterCtrl', function () {

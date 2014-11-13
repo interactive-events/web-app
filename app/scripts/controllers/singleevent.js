@@ -2,10 +2,10 @@
 
 /**
  * @ngdoc function
- * @name webAppApp.controller:SingleeventCtrl
+ * @name ieventsWebApp.controller:SingleeventCtrl
  * @description
  * # SingleeventCtrl
- * Controller of the webAppApp
+ * Controller of the ieventsWebApp
  */
 angular.module('ieventsWebApp')
   .controller('SingleEventCtrl', function ($scope, $stateParams) {
