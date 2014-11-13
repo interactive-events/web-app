@@ -79,7 +79,7 @@ module.exports = function (grunt) {
                     middleware: function (connect) {
                         return [
                             modRewrite([
-                                '!\\.ttf|\\.woff|\\.html|\\.js|\\.css|\\.png|\\.jpg$ /index.html [L]'
+                                '!\\.ttf|\\.woff|\\.html|\\.js|\\.css|\\.png|\\.jpg|\\.ico$ /index.html [L]'
                             ]),
                             connect.static('.tmp'),
                             connect().use(
@@ -210,7 +210,8 @@ module.exports = function (grunt) {
                 httpFontsPath: '/styles/fonts',
                 relativeAssets: false,
                 assetCacheBuster: false,
-                raw: 'Sass::Script::Number.precision = 10\n'
+                raw: 'Sass::Script::Number.precision = 10\n',
+                sourcemap: true
             },
             dist: {
                 options: {
@@ -461,4 +462,7 @@ module.exports = function (grunt) {
         'test',
         'build'
     ]);
+
+    // Get OS notifications for stuff that fails
+    grunt.loadNpmTasks('grunt-notify');
 };

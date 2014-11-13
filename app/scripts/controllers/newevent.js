@@ -48,7 +48,7 @@ angular.module('ieventsWebApp')
 
         // function to process the form
         $scope.processForm = function () {
-            alert("Sending POST request to API >>>");
-            $state.go("events");
+            alert('Sending POST request to API >>>');
+            $state.go('events');
         };
     });

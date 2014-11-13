@@ -9,13 +9,6 @@
  */
 angular.module('ieventsWebApp')
     .controller('EventsCtrl', function ($scope, Restangular) {
-        $scope.awesomeThings = [
-            'HTML5 Boilerplate',
-            'AngularJS',
-            'Karma'
-        ];
-        console.log($scope.awesomeThings);
-
         Restangular.setBaseUrl('http://private-582d6-interactiveevents.apiary-mock.com');
 
         var baseEvents = Restangular.one('events');

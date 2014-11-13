@@ -7,27 +7,26 @@
  * # HomeCtrl
  * Controller of the ieventsWebApp
  */
+
+
+function parralaxBackground(){
+    var yPos = -($(window).scrollTop() / 10),
+        offsetPercent = 50 - yPos,
+        coords = '50% ' + offsetPercent + '%';
+    // Move the background
+    $('.banner').css({backgroundPosition: coords});
+}
+
 angular.module('ieventsWebApp')
-  .controller('HomeCtrl', function ($scope, Restangular, $rootScope) {
-        Restangular.setBaseUrl('http://oauthprovider/lockdin/');
-        var baseToken = Restangular.all('token');
+    .controller('HomeCtrl', function ($scope) {
+        setTimeout(function () {
+            $('.phone').addClass('turn-on');
+        }, 3000);
 
-        $scope.login = function(){
-            var tokenRequest = {
-                "grant_type":"password",
-                "client_id":"demoapp",
-                "client_secret":"demopass",
-                "username":"demouser",
-                "password":"testpass"
-            }
+        $(window).scroll(parralaxBackground);
 
-            baseToken.post(tokenRequest).then(function() {
-                console.log("Token request OK");
-            }, function() {
-                console.log("Token request ERROR");
-            });
-        }
-
-        $rootScope.isLoggedIn = false;
-
-  });
+        // Clear events when controller is navigated away from
+        $scope.$on('$destroy', function () {
+            $(window).unbind('scroll');
+        });
+    });

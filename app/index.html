@@ -25,22 +25,24 @@
     <header class="main" ng-controller="HeaderCtrl">
         <div class="container">
             <div class="logo">
-                <a ui-sref="home"><img src="/images/logo.png" alt="Inact"/></a>
+                <a ui-sref="app.home">
+                    <img src="/images/logo.png" alt="Inact"/>
+                </a>
             </div>
-            <nav class="navbar navbar-default pull-left" role="navigation">
+            <nav class="navbar navbar-default pull-left ng-cloak" role="navigation" ng-if="auth.isAuthenticated()">
                 <ul class="nav navbar-nav">
-                    <li ui-sref-active="active"><a ui-sref="dashboard">Dashboard</a></li>
-                    <li ui-sref-active="active"><a ui-sref="events">Events</a></li>
-                    <li ui-sref-active="active"><a ui-sref="people">People</a></li>
-                    <li ui-sref-active="active"><a ui-sref="beacons">Beacons</a></li>
+                    <li ui-sref-active="active"><a ui-sref="app.admin.dashboard">Dashboard</a></li>
+                    <li ui-sref-active="active"><a ui-sref="app.admin.events">Events</a></li>
+                    <li ui-sref-active="active"><a ui-sref="app.admin.people">People</a></li>
+                    <li ui-sref-active="active"><a ui-sref="app.admin.beacons">Beacons</a></li>
                 </ul>
             </nav>
-            <div class="not-logged-in pull-right" ng-if="!isLoggedIn">
-                <button type="button" class="btn btn-default login-btn">Login</button>
-                <button type="button" class="btn btn-success">Register</button>
+            <div class="not-logged-in pull-right ng-cloak" ng-if="!auth.isAuthenticated()">
+                <button ui-sref="app.login" type="button" class="btn btn-default login-btn">Login</button>
+                <button ui-sref="app.register" type="button" class="btn btn-success">Register</button>
             </div>
-            <div class="profile-info pull-right" ng-if="isLoggedIn">
-                <span class=" welcome">Welcome, John </span><a ui-sref="home" class="btn btn-default login-btn">Logout</a>
+            <div class="profile-info pull-right ng-cloak" ng-if="auth.isAuthenticated()">
+                <span class=" welcome">Welcome, Bob </span><a ng-click="logout()" class="btn btn-default login-btn">Logout</a>
             </div>
         </div>
     </header>
@@ -95,8 +97,7 @@
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/angular-busy/dist/angular-busy.js"></script>
-    <script src="bower_components/ngstorage/ngStorage.js"></script>
-    <script src="bower_components/oauth-ng/dist/oauth-ng.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -111,6 +112,7 @@
         <script src="/scripts/controllers/header.js"></script>
         <script src="/scripts/controllers/newevent.js"></script>
         <script src="scripts/controllers/singleevent.js"></script>
+        <script src="scripts/controllers/login.js"></script>
         <!-- endbuild -->
 </body>
 </html>

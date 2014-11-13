@@ -9,13 +9,15 @@
 
 .banner {
   box-shadow: 1px 0 15px rgba(0,0,0,0.2) inset;
-  background: url(../images/home-bg.jpg) no-repeat center;
+  background: #060B0F url(../images/home-bg.jpg) no-repeat center;
   background-size: cover;
 
   .text {
-    max-width: 600px;
+    max-width: 700px;
     float: right;
     color: #fff;
+    padding: 50px;
+
     h1 {
       font-size: 56px;
       text-shadow: 1px 2px 8px rgba(0,0,0,0.3);
@@ -28,7 +30,103 @@
   }
 
   .banner-content {
+    position: relative;
     overflow: hidden;
-    padding: 50px;
+  }
+
+  .phone {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 261px;
+    height: 262px;
+    background: url(../images/banner/nexus-phone.png) no-repeat;
+    animation: shake .08s linear 3.8s 3;
+
+    // Checkin notification
+    &:before {
+      content: "";
+      position: absolute;
+      left: 46px;
+      bottom: 49px;
+      width: 177px;
+      height: 39px;
+      background: url(../images/banner/notification.png) no-repeat center center;
+      animation: pulse .6s linear 4s 3;
+    }
+
+    // Black screen
+    &:after {
+      content: "";
+      position: absolute;
+      left: 14px;
+      bottom: 0;
+      width: 232px;
+      height: 218px;
+      background: linear-gradient(110deg, #1e1e1e 0%,#1e1e1e 50%,#000 51%,#000 60%,#000 100%);
+      animation: fadeout .4s linear 4s forwards;
+    }
   }
 }
+
+@keyframes fadeout {
+  from { opacity: 1; }
+  to { opacity: 0;}
+}
+@keyframes pulse {
+  0% { opacity: 1; }
+  60% { opacity: 0.1;}
+  100% { opacity: 1;}
+}
+
+@keyframes shake {
+  0% { transform: translateX(0x)}
+  25% { transform: translateX(-5px)}
+  75% { transform: translateX(5px)}
+  100% { transform: translateX(0)}
+}
+
+// For retina screens
+@media
+(-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dppx) {
+  .banner .phone:before { background-image: url(../images/2x/notification@2x.png); background-size: 167px 29px; }
+}
+
+// Bluetooth thing
+.bluetooth {
+  position:absolute;
+  left:302px;
+  bottom:0;
+  width:130px;
+  height: 130;
+}
+.bar {
+  padding:8px;
+  border: 8px solid transparent;
+  border-radius:400px;
+  animation: left 1.4s linear 3;
+}
+
+.one {width:130px;
+  height:150px;
+  animation-delay:2.45s;
+}
+.two {
+  animation-delay:2.3s;}
+.three {
+  animation-delay:2.15s;}
+.four {
+  animation-delay:2s;}
+
+@keyframes left{
+  0% {border-top: 8px solid #00b7f2;}
+  30% { border-top-color: rgba(0,0,0,0);}
+}
+
+.bluetooth-icon {
+  position: absolute;
+  bottom: 0;
+  left: 305px;
+}
+
