@@ -67,6 +67,8 @@
     <![endif]-->
     <!-- endbuild -->
 
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -98,21 +100,25 @@
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/angular-busy/dist/angular-busy.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-socket-io/socket.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
+    <script src="http://code.highcharts.com/highcharts-3d.js"></script>
+
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="/scripts/app.js"></script>
-        <script src="/scripts/controllers/home.js"></script>
-        <script src="/scripts/controllers/dashboard.js"></script>
-        <script src="/scripts/controllers/events.js"></script>
-        <script src="/scripts/controllers/people.js"></script>
-        <script src="/scripts/controllers/beacons.js"></script>
-        <script src="/scripts/controllers/menu.js"></script>
-        <script src="/scripts/controllers/header.js"></script>
-        <script src="/scripts/controllers/newevent.js"></script>
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/home.js"></script>
+        <script src="scripts/controllers/dashboard.js"></script>
+        <script src="scripts/controllers/events.js"></script>
+        <script src="scripts/controllers/people.js"></script>
+        <script src="scripts/controllers/beacons.js"></script>
+        <script src="scripts/controllers/menu.js"></script>
+        <script src="scripts/controllers/header.js"></script>
+        <script src="scripts/controllers/newevent.js"></script>
         <script src="scripts/controllers/singleevent.js"></script>
         <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/register.js"></script>
         <!-- endbuild -->
 </body>
 </html>

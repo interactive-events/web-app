@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name ieventsWebApp.controller:LoginCtrl
+ * @name ieventsWebApp.controller:RegisterCtrl
  * @description
- * # LoginCtrl
+ * # RegisterCtrl
  * Controller of the ieventsWebApp
  */
 angular.module('ieventsWebApp')
-    .controller('RegisterCtrl', function () {
-
+    .controller('RegisterCtrl', function ($scope) {
+        $scope.fluff = 'duff';
     });

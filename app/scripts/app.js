@@ -17,7 +17,8 @@ angular
         'highcharts-ng',
         'ui.router',
         'ui.bootstrap',
-        'cgBusy'
+        'cgBusy',
+        'btford.socket-io'
     ])
 
     .config(function ($urlRouterProvider, $locationProvider, $stateProvider) {
@@ -107,12 +108,14 @@ angular
             .state('app.denied', {
                 url: '/denied',
                 templateUrl: '/views/denied.html',
-                controller: function(){}
+                controller: function () {
+                }
             })
             .state('app.superadmin', {
                 url: '/lol',
                 template: '<h2>Super crazy admin page</h2>',
-                controller: function(){},
+                controller: function () {
+                },
                 data: {
                     roles: ['superadmin']
                 }
@@ -134,12 +137,12 @@ angular
                 authorization.authorize();
             }
 
-            if(!$cookieStore.get('user')) {
+            if (!$cookieStore.get('user')) {
                 principal.authenticate(null);
             }
 
             // Go to dashboard instead of home page if logged in
-            if(toState.name === 'app.home' && principal.isAuthenticated()) {
+            if (toState.name === 'app.home' && principal.isAuthenticated()) {
                 $state.go('app.admin.dashboard');
             }
         });
@@ -181,7 +184,7 @@ angular
                 _identity = identity;
                 _authenticated = identity !== null;
 
-                if(identity) {
+                if (identity) {
                     $cookieStore.put('user', identity);
                 } else {
                     $cookieStore.remove('user');
@@ -201,7 +204,7 @@ angular
                     return deferred.promise;
                 }
 
-                if($cookieStore.get('user')) {
+                if ($cookieStore.get('user')) {
                     _identity = $cookieStore.get('user');
                     _authenticated = true;
                 } else {
@@ -232,10 +235,10 @@ angular
                 // commented out above. in this example, we fake looking up to find the user is
                 // not logged in
                 /*$timeout(function () {
-                    _identity = null;
-                    _authenticated = false;
-                    deferred.resolve(_identity);
-                }, 1000);*/
+                 _identity = null;
+                 _authenticated = false;
+                 deferred.resolve(_identity);
+                 }, 1000);*/
             }
         };
     }
@@ -266,7 +269,17 @@ angular
                 }
             };
         }
-    ])
+    ]).
+    //Setup socket.io
+    factory('socket', function (socketFactory) {
+        /* global io: false */
+        var ioSocket = io.connect('localhost:3000');
+        var socket = socketFactory({
+            ioSocket: ioSocket
+        });
+
+        return socket;
+    })
 
 // Convert ui states into classes that can be applued to <body>
     .filter('stateToClasses', function () {
