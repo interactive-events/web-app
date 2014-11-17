@@ -18,7 +18,7 @@ angular
         'ui.router',
         'ui.bootstrap',
         'cgBusy',
-        //'btford.socket-io'
+        'btford.socket-io'
     ])
 
     .config(function ($urlRouterProvider, $locationProvider, $stateProvider) {
@@ -79,7 +79,7 @@ angular
                 controller: 'SingleEventCtrl'
             })
             .state('app.admin.events.single-event.people', {
-                url: '/activities',
+                url: '',
                 templateUrl: '/views/single-event/activities.html',
                 controller: 'SingleEventActivitiesCtrl'
             })
@@ -133,6 +133,12 @@ angular
                 data: {
                     roles: ['superadmin']
                 }
+            })
+            .state('app.poll', {
+                // For demp purposes, should be under admin section
+                url: '/events/:eventId/modules/1/push',
+                templateUrl: '/views/poll.html',
+                controller: 'PollCtrl'
             });
 
         $urlRouterProvider.otherwise('/404');
@@ -284,19 +290,21 @@ angular
             };
         }
     ])
-    //Setup socket.io
- //   factory('socket', function (socketFactory) {
+// Setup socket.io
+    .factory('socket', function (socketFactory) {
 
-  //      var ioSocket = io.connect('localhost:3000');
-   //     var socket = socketFactory({
-    //        ioSocket: ioSocket
-     //   });
+        /* global io: false */
+        var ioSocket = io.connect('localhost:8000/events/1/modules/1/');
+        var socket = socketFactory({
+            ioSocket: ioSocket
+        });
 
-       // return socket;
-  //  })
+        return socket;
+    })
 
 // Convert ui states into classes that can be applied to <body>
-    .filter('stateToClasses', function () {
+    .
+    filter('stateToClasses', function () {
         return function (input) {
             return input.replace(/\./g, ' ');
         };

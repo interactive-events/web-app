@@ -48,6 +48,7 @@
                         <span class="glyphicon glyphicon-user"></span> <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
+                        <li><a ui-sref="app.admin.dashboard">Dashboard</a></li>
                         <li><a href="#">My profile</a></li>
                         <li><a href="#">Settings</a></li>
                         <li class="divider"></li>
@@ -78,7 +79,8 @@
     <![endif]-->
     <!-- endbuild -->
 
-    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script src="http://localhost:8000/socket.io/socket.io.js"></script>
+    <!--<script src="http://interactive-events.elasticbeanstalk.com/socket.io/socket.io.js"></script>-->
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -130,6 +132,7 @@
         <script src="scripts/controllers/singleevent.js"></script>
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/register.js"></script>
+        <script src="scripts/controllers/poll.js"></script>
         <!-- endbuild -->
 </body>
 </html>
