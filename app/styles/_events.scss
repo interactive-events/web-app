@@ -49,6 +49,41 @@ header.section {
   }
 }
 
+.event-stats {
+  text-align: center;
+  span {
+    font-size: 42px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .progress {
+    margin-bottom: 0;
+    background-color: #fff;
+  }
+}
+
+.single-event {
+  .nav-tabs {
+    h4 {
+      margin: 0;
+    }
+    .glyphicon {
+      top: 2px;
+    }
+  }
+  .tab-content {
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    h3 {
+      margin-top: 0;
+    }
+  }
+}
+
 @keyframes shine {
   0% {
     left: -45%;

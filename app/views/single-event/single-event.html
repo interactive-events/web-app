@@ -1,0 +1,56 @@
+<div class="container">
+    <header class="section">
+        <h1>An awesome event</h1>
+
+        <div class="actions btn-toolbar">
+            <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> Presenter mode</a>
+            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> Edit event</a>
+        </div>
+    </header>
+    <div class="row">
+        <div class="col-md-9 col-md-push-3">
+            <div class="well well-sm event-stats">
+                <div class="row">
+                    <div class="col-xs-3"><span>12</span>Currently attending</div>
+                    <div class="col-xs-3"><span>25</span>People invited</div>
+                    <div class="col-xs-3"><span>9</span>Activities planned</div>
+                    <div class="col-xs-3"><span>56%</span>
+
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                Completed
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="nav nav-tabs nav-justified">
+                <li role="presentation" class="active"><a href="#"><h4><span class="glyphicon glyphicon-th-list"></span> Activities</h4></a></li>
+                <li role="presentation"><a href="#"><h4><span class="glyphicon glyphicon-user"></span> People</h4></a></li>
+                <li role="presentation"><a href="#"><h4><span class="glyphicon glyphicon-map-marker"></span> Beacons</h4></a></li>
+                <li role="presentation"><a href="#"><h4><span class="glyphicon glyphicon-cog"></span> Settings</h4></a></li>
+            </ul>
+            <ui-view/>
+        </div>
+        <div class="col-md-3 col-md-pull-9">
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading"><strong>Description</strong></div>
+                <div class="panel-body">
+                    <p>Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem
+                        lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                </div>
+
+                <!-- List group -->
+                <ul class="list-group">
+                    <li class="list-group-item"><span class="glyphicon glyphicon-info-sign"></span><strong> Status: </strong><span class="label label-success">in progress</span>
+                    </li>
+                    <li class="list-group-item"><span class="glyphicon glyphicon-calendar"></span><strong> Date: </strong>17 november 2014</li>
+                    <li class="list-group-item"><span class="glyphicon glyphicon-time"></span><strong> Time: </strong>14:45 - 16:15</li>
+                    <li class="list-group-item"><span class="glyphicon glyphicon-map-marker"></span><strong> Location: </strong>E239, campus Luleå</li>
+                    <li class="list-group-item"><span class="glyphicon glyphicon-lock"></span><strong> Type: </strong>private event</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -18,7 +18,7 @@ angular
         'ui.router',
         'ui.bootstrap',
         'cgBusy',
-        'btford.socket-io'
+        //'btford.socket-io'
     ])
 
     .config(function ($urlRouterProvider, $locationProvider, $stateProvider) {
@@ -37,7 +37,6 @@ angular
             }
         }).
             state('app.admin', {
-                parent: 'app',
                 template: '<ui-view/>',
                 abstract: true,
                 data: {
@@ -61,36 +60,51 @@ angular
             })
             .state('app.admin.events', {
                 url: '/events',
+                template: '<ui-view/>',
+                abstract: true,
+            })
+            .state('app.admin.events.list', {
+                url: '',
                 templateUrl: '/views/events.html',
                 controller: 'EventsCtrl'
             })
-            .state('app.admin.single-event', {
-                url: '/events/:eventId',
-                templateUrl: '/views/single-event.html',
+            .state('app.admin.events.single-event', {
+                url: '/:eventId',
+                templateUrl: '/views/single-event/single-event.html',
                 controller: 'SingleEventCtrl'
+            })
+            .state('app.admin.events.single-event.activities', {
+                url: '/activities',
+                templateUrl: '/views/single-event/activities.html',
+                controller: 'SingleEventCtrl'
+            })
+            .state('app.admin.events.single-event.people', {
+                url: '/activities',
+                templateUrl: '/views/single-event/activities.html',
+                controller: 'SingleEventActivitiesCtrl'
             })
             .state('app.admin.dashboard', {
                 url: '/dashboard',
                 templateUrl: '/views/dashboard.html',
                 controller: 'DashboardCtrl'
             })
-            .state('app.admin.new-event', {
-                url: '/events/new',
+            .state('app.admin.events.new-event', {
+                url: '/new',
                 templateUrl: '/views/new-event/new-event.html',
                 controller: 'NeweventCtrl'
             })
             // nested states
             // each of these sections will have their own view
             // url will be nested (/events/new/1)
-            .state('app.new-event.step1', {
+            .state('app.admin.events.new-event.step1', {
                 url: '/1',
                 templateUrl: '/views/new-event/step1.html'
             })
-            .state('app.new-event.step2', {
+            .state('app.admin.events.new-event.step2', {
                 url: '/2',
                 templateUrl: '/views/new-event/step2.html'
             })
-            .state('app.new-event.step3', {
+            .state('app.admin.events.new-event.step3', {
                 url: '/3',
                 templateUrl: '/views/new-event/step3.html'
             })
@@ -269,21 +283,21 @@ angular
                 }
             };
         }
-    ]).
+    ])
     //Setup socket.io
-    factory('socket', function (socketFactory) {
-        /* global io: false */
-        var ioSocket = io.connect('localhost:3000');
-        var socket = socketFactory({
-            ioSocket: ioSocket
-        });
+ //   factory('socket', function (socketFactory) {
 
-        return socket;
-    })
+  //      var ioSocket = io.connect('localhost:3000');
+   //     var socket = socketFactory({
+    //        ioSocket: ioSocket
+     //   });
 
-// Convert ui states into classes that can be applued to <body>
+       // return socket;
+  //  })
+
+// Convert ui states into classes that can be applied to <body>
     .filter('stateToClasses', function () {
         return function (input) {
-            return input.replace('.', ' ');
+            return input.replace(/\./g, ' ');
         };
     });
