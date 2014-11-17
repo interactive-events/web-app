@@ -18,6 +18,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "section";
 @import "forms";
 @import "login";
+@import "modules";
 @import "dashboard";
 @import "events";
 @import "newEventWizard";
@@ -35,4 +36,8 @@ h1, h2, h3 h4, h5, h6 {
   display:none;
 }
 
-body { padding-top: 20px; }
+body.poll { padding-top: 20px; }
+
+.navbar-toggle {
+  margin-left: 8px;
+}

@@ -30,12 +30,22 @@
                 </a>
             </div>
             <nav class="navbar navbar-default pull-left ng-cloak" role="navigation" ng-if="auth.isAuthenticated()">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li ui-sref-active="active"><a ui-sref="app.admin.dashboard">Dashboard</a></li>
                     <li ui-sref-active="active"><a ui-sref="app.admin.events.list">Events</a></li>
                     <li ui-sref-active="active"><a ui-sref="app.admin.people">People</a></li>
                     <li ui-sref-active="active"><a ui-sref="app.admin.beacons">Beacons</a></li>
                 </ul>
+                    </div>
             </nav>
             <div class="not-logged-in pull-right ng-cloak" ng-if="!auth.isAuthenticated()">
                 <button ui-sref="app.login" type="button" class="btn btn-default login-btn">Login</button>
@@ -79,8 +89,7 @@
     <![endif]-->
     <!-- endbuild -->
 
-    <script src="http://localhost:8000/socket.io/socket.io.js"></script>
-    <!--<script src="http://interactive-events.elasticbeanstalk.com/socket.io/socket.io.js"></script>-->
+    <script src="http://interactive-events.elasticbeanstalk.com/socket.io/socket.io.js"></script>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -116,9 +125,7 @@
     <script src="bower_components/angular-socket-io/socket.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-
-    <script src="http://code.highcharts.com/highcharts-3d.js"></script>
-
+    
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/home.js"></script>

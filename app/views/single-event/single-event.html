@@ -3,7 +3,7 @@
         <h1>An awesome event</h1>
 
         <div class="actions btn-toolbar">
-            <a href="events/1/modules/1/push target=" _blank" class="btn btn-success"><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> Presenter mode</a>
+            <a ng-click="openPresenterView()" class="btn btn-success"><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> Presenter mode</a>
             <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> Edit event</a>
         </div>
     </header>
@@ -25,12 +25,18 @@
                 </div>
             </div>
             <ul class="nav nav-tabs nav-justified">
-                <li role="presentation" class="active"><a href="#"><h4><span class="glyphicon glyphicon-th-list"></span> Activities</h4></a></li>
-                <li role="presentation"><a href="#"><h4><span class="glyphicon glyphicon-user"></span> People</h4></a></li>
-                <li role="presentation"><a href="#"><h4><span class="glyphicon glyphicon-map-marker"></span> Beacons</h4></a></li>
-                <li role="presentation"><a href="#"><h4><span class="glyphicon glyphicon-cog"></span> Settings</h4></a></li>
+                <li ui-sref-active="active" role="presentation" class="active"><a ui-sref="app.admin.events.single-event.activities"><h4><span
+                        class="glyphicon glyphicon-th-list"></span> Activities</h4></a></li>
+                <li ui-sref-active="active" role="presentation"><a ui-sref="app.admin.events.single-event.people"><h4><span class="glyphicon glyphicon-user"></span> People</h4></a>
+                </li>
+                <li ui-sref-active="active" role="presentation"><a ui-sref="app.admin.events.single-event.beacons"><h4><span class="glyphicon glyphicon-map-marker"></span> Beacons</h4>
+                </a></li>
+                <li ui-sref-active="active" role="presentation"><a ui-sref="app.admin.events.single-event.settings"><h4><span class="glyphicon glyphicon-cog"></span> Settings</h4></a>
+                </li>
             </ul>
-            <ui-view/>
+            <div class="tab-content">
+                <ui-view/>
+            </div>
         </div>
         <div class="col-md-3 col-md-pull-9">
             <div class="panel panel-default">

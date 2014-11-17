@@ -74,14 +74,24 @@ angular
                 controller: 'SingleEventCtrl'
             })
             .state('app.admin.events.single-event.activities', {
-                url: '/activities',
+                url: '/',
                 templateUrl: '/views/single-event/activities.html',
                 controller: 'SingleEventCtrl'
             })
             .state('app.admin.events.single-event.people', {
-                url: '',
-                templateUrl: '/views/single-event/activities.html',
-                controller: 'SingleEventActivitiesCtrl'
+                url: '/people',
+                templateUrl: '/views/single-event/people.html',
+                controller: 'SingleEventCtrl'
+            })
+            .state('app.admin.events.single-event.beacons', {
+                url: '/people',
+                templateUrl: '/views/single-event/beacons.html',
+                controller: 'SingleEventCtrl'
+            })
+            .state('app.admin.events.single-event.settings', {
+                url: '/people',
+                templateUrl: '/views/single-event/settings.html',
+                controller: 'SingleEventCtrl'
             })
             .state('app.admin.dashboard', {
                 url: '/dashboard',
@@ -294,7 +304,7 @@ angular
     .factory('socket', function (socketFactory) {
 
         /* global io: false */
-        var ioSocket = io.connect('localhost:8000/events/1/modules/1/');
+        var ioSocket = io.connect('http://interactive-events.elasticbeanstalk.com/socket.io/socket.io.js/events/1/modules/1');
         var socket = socketFactory({
             ioSocket: ioSocket
         });
