@@ -304,7 +304,7 @@ angular
     .factory('socket', function (socketFactory) {
 
         /* global io: false */
-        var ioSocket = io.connect('http://interactive-events.elasticbeanstalk.com/socket.io/socket.io.js/events/1/modules/1');
+        var ioSocket = io.connect('http://server.raxo.se:8888/events/1/modules/1');
         var socket = socketFactory({
             ioSocket: ioSocket
         });
