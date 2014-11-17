@@ -19,7 +19,7 @@ angular.module('ieventsWebApp')
 
         $scope.startPoll = function () {
             $('.poll-status').removeClass('label-default').addClass('label-success').html('voting started');
-            Restangular.setBaseUrl('http://localhost:8000');
+            Restangular.setBaseUrl('http://interactive-events.elasticbeanstalk.com/');
             var baseEvents = Restangular.one('events/1/modules/1/start');
             baseEvents.get();
         };
