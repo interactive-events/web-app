@@ -10,4 +10,8 @@
 angular.module('ieventsWebApp')
     .controller('SingleEventCtrl', function ($scope, $stateParams) {
         $scope.eventId = $stateParams.eventId;
+
+        $scope.startPoll = function(){
+
+        };
     });
