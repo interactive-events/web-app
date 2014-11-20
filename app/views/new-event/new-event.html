@@ -3,11 +3,14 @@
 
         <!-- the links to our nested states using relative paths -->
         <!-- add the active class if the state matches our ui-sref -->
-        <div class="btn-group">
-            <button ui-sref-active="active" ui-sref="app..step1" type="button" class="btn btn-default">1. Basics</button>
-            <button ui-sref-active="active" ui-sref="app..step2" type="button" class="btn btn-default">2. Activities</button>
-            <button ui-sref-active="active" ui-sref="app..step3" type="button" class="btn btn-default">3. Beacon</button>
-        </div>
+        <nav>
+            <ul class="pagination">
+                <li ui-sref-active="active"><a ui-sref="app.admin.events.new-event.step1">Basics</a></li>
+                <li ui-sref-active="active"><a ui-sref="app.admin.events.new-event.step2">Activities</a></li>
+                <li ui-sref-active="active"><a ui-sref="app.admin.events.new-event.step3">People</a></li>
+                <li ui-sref-active="active"><a ui-sref="app.admin.events.new-event.step3">Beacons</a></li>
+            </ul>
+        </nav>
     </header>
 
     <!-- use ng-submit to catch the form submission and use our Angular function -->
@@ -19,8 +22,6 @@
 
     <div>
         <h4>Form data</h4>
-    <pre>
-{{ formData | json }}
-    </pre>
+    <pre>{{ formData | json }}</pre>
     </div>
 </div>

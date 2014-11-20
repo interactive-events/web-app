@@ -18,10 +18,11 @@ angular
         'ui.router',
         'ui.bootstrap',
         'cgBusy',
-        'btford.socket-io'
+        'btford.socket-io',
+        'uiGmapgoogle-maps'
     ])
 
-    .config(function ($urlRouterProvider, $locationProvider, $stateProvider) {
+    .config(function ($urlRouterProvider, $locationProvider, $stateProvider, uiGmapGoogleMapApiProvider) {
         // Enable HTML5 pushstate
         $locationProvider.html5Mode(true);
 
@@ -152,6 +153,13 @@ angular
             });
 
         $urlRouterProvider.otherwise('/404');
+
+        // Google maps
+        uiGmapGoogleMapApiProvider.configure({
+            key: 'AIzaSyALqpI6cs7I1NiJ3w-nidAlrwsR44FwJHo',
+            v: '3.17',
+            libraries: 'weather,geometry,visualization'
+        });
     })
 
     .run(function ($rootScope, $state, $stateParams, authorization, principal, $cookieStore) {

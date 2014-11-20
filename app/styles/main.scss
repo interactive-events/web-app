@@ -41,3 +41,14 @@ body.poll { padding-top: 20px; }
 .navbar-toggle {
   margin-left: 8px;
 }
+
+// Fix for inline form elements inside block form
+.form-inline .form-group{
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.modal.fade:not(.in) .modal-dialog {
+  -webkit-transform: translate3d(0, 0, 0), transform3d;
+  transform: translate3d(0, 0, 0);
+}
