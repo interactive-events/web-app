@@ -13,6 +13,7 @@ angular.module('ieventsWebApp')
 
         $scope.eventPromise = Restangular.one('events', $scope.eventId).get();
         $scope.event = $scope.eventPromise.$object;
+        console.log($scope.eventPromise.$object);
 
         $scope.openPresenterView = function () {
             var left = screen.width / 2 - 200,
