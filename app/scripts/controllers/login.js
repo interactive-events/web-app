@@ -20,16 +20,12 @@ angular.module('ieventsWebApp')
         }
 
         $scope.loginFormSubmit = function (email, password) {
-
-            Restangular.setBaseUrl('http://interactive-events.elasticbeanstalk.com');
-            //Restangular.setBaseUrl('http://localhost:8000');
             var token = Restangular.all('oauth/token');
 
-            /*jshint camelcase: false */
             var tokenRequest = {
                 grant_type: 'password',
-                client_id: 1,
-                client_secret: 'secret',
+                client_id: $rootScope.clientId,
+                client_secret: $rootScope.clientSecret,
                 username: email,
                 password: password
             };

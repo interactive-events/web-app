@@ -1,7 +1,20 @@
-<div class="well well-lg text-center">
-    No activities yet <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-plus"></span> Add activity</a>
+<div class="well well-lg text-center" ng-show="!formData.activities">
+    No activities yet&nbsp;&nbsp;&nbsp;<a class="btn btn-success" ng-click="openNewActivityModal()"><span class="glyphicon glyphicon-plus"></span> Add activity</a>
 </div>
 
+<div class="panel panel-default" ng-show="formData.activities">
+    <div class="panel-heading">
+        <h3 class="panel-title">Planned activities</h3>
+    </div>
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="activity in formData.activities">
+            <h4 class="list-group-item-heading">{{ $index+1 }}. {{ modules[activity.module].name }}</h4>
+            <p class="list-group-item-text"><strong>Question: </strong>{{ activity.customData.pollDescription.question }}</p>
+            <p class="list-group-item-text"><strong>Answers: </strong>{{ activity.customData.pollDescription.answers.length }}</p>
+           </li>
+    </ul>
+    <div class="panel-footer"><a class="btn btn-success" ng-click="openNewActivityModal()"><span class="glyphicon glyphicon-plus"></span> Add activity</a></div>
+</div>
 <a ui-sref="app.admin.events.new-event.step3" class="btn pull-right btn-primary">
     Next <span class="glyphicon glyphicon-arrow-right"></span>
 </a>

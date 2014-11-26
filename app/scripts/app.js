@@ -19,7 +19,9 @@ angular
         'ui.bootstrap',
         'cgBusy',
         'btford.socket-io',
-        'uiGmapgoogle-maps'
+        'uiGmapgoogle-maps',
+        'geolocation',
+        'cfp.hotkeys'
     ])
 
     .config(function ($urlRouterProvider, $locationProvider, $stateProvider, uiGmapGoogleMapApiProvider) {
@@ -119,6 +121,10 @@ angular
                 url: '/3',
                 templateUrl: '/views/new-event/step3.html'
             })
+            .state('app.admin.events.new-event.step4', {
+                url: '/4',
+                templateUrl: '/views/new-event/step4.html'
+            })
             // Login / register / forgot
             .state('app.login', {
                 url: '/login',
@@ -160,11 +166,40 @@ angular
             v: '3.17',
             libraries: 'weather,geometry,visualization'
         });
+
     })
 
-    .run(function ($rootScope, $state, $stateParams, authorization, principal, $cookieStore) {
+    .run(function ($rootScope, $state, $stateParams, $http, authorization, principal, $cookieStore, hotkeys, Restangular) {
+
+        hotkeys.add({
+            combo: 'ctrl+b',
+            description: 'Show debug info',
+            callback: function () {
+                $('body').toggleClass('show-debug-info');
+            }
+        });
+
+        $rootScope.clientId = '546db8beec2e840000faccf8';
+        $rootScope.clientSecret = 'Hello';
         $rootScope.auth = principal;
         $rootScope.$state = $state;
+
+        Restangular.setBaseUrl('http://interactive-events.elasticbeanstalk.com/');
+        //Restangular.setBaseUrl('http://localhost:8000/');
+
+        Restangular.setErrorInterceptor(function (response) {
+            if (response.status === 403) {
+                //TODO Implement refresh token
+                return false; // error handled
+            } else if (response.status === 500 && response.data.message && response.data.message === 'expired') {
+                // Invalidate login
+                principal.authenticate(null);
+                $state.go('app.login');
+            }
+
+            return true; // error not handled
+        });
+
         $rootScope.$on('$stateChangeStart', function (event, toState, toStateParams) {
             // track the state the user wants to go to; authorization service needs this
             $rootScope.toState = toState;
@@ -175,7 +210,9 @@ angular
                 authorization.authorize();
             }
 
-            if (!$cookieStore.get('user')) {
+            if ($cookieStore.get('user')) {
+                $http.defaults.headers.common.Authorization = 'Bearer ' + $cookieStore.get('user').accessToken;
+            } else {
                 principal.authenticate(null);
             }
 
@@ -186,7 +223,8 @@ angular
         });
     })
 
-    .factory('principal',
+    .
+    factory('principal',
     function ($q, $http, $timeout, $cookieStore) {
         var _identity,
             _authenticated = false;
@@ -224,8 +262,10 @@ angular
 
                 if (identity) {
                     $cookieStore.put('user', identity);
+                    $http.defaults.headers.common.Authorization = 'Bearer ' + identity.accessToken;
                 } else {
                     $cookieStore.remove('user');
+                    $http.defaults.headers.common.Authorization = '';
                 }
             },
             identity: function (force) {
@@ -281,49 +321,52 @@ angular
         };
     }
 )
-    .factory('authorization', ['$rootScope', '$state', 'principal',
-        function ($rootScope, $state, principal) {
-            return {
-                authorize: function () {
-                    return principal.identity()
-                        .then(function () {
-                            var isAuthenticated = principal.isAuthenticated();
-                            if ($rootScope.toState.data && $rootScope.toState.data.roles && $rootScope.toState.data.roles.length > 0 && !principal.isInAnyRole($rootScope.toState.data.roles)) {
-                                if (isAuthenticated) {
-                                    $state.go('app.denied');
-                                } // user is signed in but not authorized for desired state
-                                else {
-                                    // user is not authenticated. stow the state they wanted before you
-                                    // send them to the signin state, so you can return them when you're done
-                                    $rootScope.notAuthorized = true;
-                                    $rootScope.returnToState = $rootScope.toState;
-                                    $rootScope.returnToStateParams = $rootScope.toStateParams;
+    .factory('authorization',
+    function ($rootScope, $state, principal) {
+        return {
+            authorize: function () {
+                return principal.identity()
+                    .then(function () {
+                        var isAuthenticated = principal.isAuthenticated();
+                        if ($rootScope.toState.data && $rootScope.toState.data.roles && $rootScope.toState.data.roles.length > 0 && !principal.isInAnyRole($rootScope.toState.data.roles)) {
+                            if (isAuthenticated) {
+                                $state.go('app.denied');
+                            } // user is signed in but not authorized for desired state
+                            else {
+                                // user is not authenticated. stow the state they wanted before you
+                                // send them to the signin state, so you can return them when you're done
+                                $rootScope.notAuthorized = true;
+                                $rootScope.returnToState = $rootScope.toState;
+                                $rootScope.returnToStateParams = $rootScope.toStateParams;
 
-                                    // now, send them to the signin state so they can log in
-                                    $state.go('app.login');
-                                }
+                                // now, send them to the signin state so they can log in
+                                $state.go('app.login');
                             }
-                        });
-                }
-            };
-        }
-    ])
+                        }
+                    });
+            }
+        };
+    }
+)
 // Setup socket.io
     .factory('socket', function (socketFactory) {
 
         /* global io: false */
-        var ioSocket = io.connect('http://server.raxo.se:8888/events/1/modules/1');
+        var ioSocket = io.connect('http://interactive-events.elasticbeanstalk.com/events/1/modules/1');
         var socket = socketFactory({
             ioSocket: ioSocket
         });
 
         return socket;
     })
+        .value('cgBusyDefaults', {
+            message: 'Loading',
+            delay: 800,
+        })
 
 // Convert ui states into classes that can be applied to <body>
-    .
-    filter('stateToClasses', function () {
-        return function (input) {
-            return input.replace(/\./g, ' ');
-        };
-    });
+        .filter('stateToClasses', function () {
+            return function (input) {
+                return input.replace(/\./g, ' ');
+            };
+        });

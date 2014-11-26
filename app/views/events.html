@@ -1,7 +1,7 @@
 <div class="container">
     <header class="section">
         <h1>Events</h1>
-        <span class="ongoing-event"><span>1 event in progress: An awesome event</span> <a ng-href="/events/123/">Go to event</a></span>
+        <!--<span class="ongoing-event"><span>1 event in progress: An awesome event</span> <a ng-href="/events/123/">Go to event</a></span>-->
 
         <div class="actions">
             <a ui-sref="app.admin.events.new-event.step1" class="btn btn-success add">New event</a>
@@ -25,7 +25,7 @@
         <tbody>
         <tr ng-repeat="obj in eventsResponse.events">
             <td>{{obj.event.id}}</td>
-            <td>{{obj.event.title}}</td>
+            <td><a ng-href="/events/{{obj.event.id}}/">{{obj.event.title}}</a></td>
             <td>{{obj.event.startTime}}</td>
             <td>{{obj.event.date}}</td>
             <td>{{obj.event.public}}</td>

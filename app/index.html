@@ -10,6 +10,7 @@
     <!-- build:css(.) /styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/angular-busy/dist/angular-busy.css" />
+    <link rel="stylesheet" href="bower_components/angular-hotkeys/build/hotkeys.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
@@ -22,7 +23,7 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <header class="main" ng-controller="HeaderCtrl">
+    <header class="main ng-cloak" ng-controller="HeaderCtrl">
         <div class="container">
             <div class="logo">
                 <a ui-sref="app.home">
@@ -89,8 +90,8 @@
     <![endif]-->
     <!-- endbuild -->
 
-    <!---<script src="http://interactive-events.elasticbeanstalk.com/socket.io/socket.io.js"></script>--->
-    <script src="http://server.raxo.se:8888/socket.io/socket.io.js"></script>
+    <script src="http://interactive-events.elasticbeanstalk.com/socket.io/socket.io.js"></script>
+    <!--<script src="http://server.raxo.se:8888/socket.io/socket.io.js"></script>-->
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -125,7 +126,10 @@
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-socket-io/socket.js"></script>
     <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
+    <script src="bower_components/angularjs-geolocation/src/geolocation.js"></script>
+    <script src="bower_components/angular-hotkeys/build/hotkeys.min.js"></script>
     <!-- endbower -->
+    <script src="bower_components/faker/dist/faker.min.js"></script>
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -143,6 +147,7 @@
         <script src="scripts/controllers/register.js"></script>
         <script src="scripts/controllers/poll.js"></script>
         <script src="scripts/controllers/mapmodal.js"></script>
+        <script src="scripts/controllers/neweventaddactivitymodal.js"></script>
         <!-- endbuild -->
 </body>
 </html>

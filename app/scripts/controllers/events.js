@@ -9,8 +9,6 @@
  */
 angular.module('ieventsWebApp')
     .controller('EventsCtrl', function ($scope, Restangular) {
-        Restangular.setBaseUrl('http://private-582d6-interactiveevents.apiary-mock.com');
-
         var baseEvents = Restangular.one('events');
 
         $scope.eventsPromise = baseEvents.get();

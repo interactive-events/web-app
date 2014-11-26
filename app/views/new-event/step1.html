@@ -1,6 +1,6 @@
 <div class="form-group">
     <label for="name">Name</label>
-    <input type="text" name="name" class="form-control" id="name" ng-model="formData.name">
+    <input type="text" name="name" class="form-control" id="name" ng-model="formData.title">
 </div>
 
 <div class="form-group">
@@ -11,7 +11,7 @@
     <label for="date">Date & time</label>
 
     <div class="input-group date-group">
-        <input type="text" class="form-control" datepicker-popup="dd MMMM yyyy" id="date" name="date" ng-model="formData.date" is-open="opened"
+        <input type="text" class="form-control" datepicker-popup="dd MMMM yyyy" id="date" name="date" ng-model="formData.time.date" is-open="opened"
                min-date="minDate"
                ng-required="true"
                close-text="Close"/>
@@ -49,4 +49,3 @@
 <a ui-sref="app.admin.events.new-event.step2" class="btn pull-right btn-primary">
     Next <span class="glyphicon glyphicon-arrow-right"></span>
 </a>
-</div>

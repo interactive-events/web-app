@@ -1,8 +1,8 @@
 <div class="modal-header">
-    <h3 class="modal-title">Drag the marker to the event location</h3>
+    <h3 class="modal-title text-center">Drag the marker to the event location</h3>
 </div>
 <div class="modal-body map-modal">
-    <ui-gmap-google-map center='map.center' zoom='map.zoom' pan="true">
+    <ui-gmap-google-map center='map.center' events="map.events" zoom='map.zoom' control="map.control" pan="true">
         <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
         </ui-gmap-marker>
     </ui-gmap-google-map>
@@ -10,4 +10,6 @@
 <div class="modal-footer">
     <button class="btn btn-success" ng-click="ok()">Save</button>
     <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+    <pre>{{ map | json }}</pre>
+    <pre>{{ marker | json }}</pre>
 </div>

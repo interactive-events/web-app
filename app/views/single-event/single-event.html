@@ -1,13 +1,13 @@
 <div class="container">
     <header class="section">
-        <h1>An awesome event</h1>
+        <h1 ng-cloak>{{ event.title }} </h1>
 
         <div class="actions btn-toolbar">
             <a ng-click="openPresenterView()" class="btn btn-success"><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> Presenter mode</a>
             <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> Edit event</a>
         </div>
     </header>
-    <div class="row">
+    <div class="row" cg-busy="eventPromise">
         <div class="col-md-9 col-md-push-3">
             <div class="well well-sm event-stats">
                 <div class="row">
@@ -43,8 +43,7 @@
                 <!-- Default panel contents -->
                 <div class="panel-heading"><strong>Description</strong></div>
                 <div class="panel-body">
-                    <p>Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem
-                        lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    <p>{{event.description}}</p>
                 </div>
 
                 <!-- List group -->

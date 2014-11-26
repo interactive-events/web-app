@@ -44,7 +44,6 @@
 #signup-form {
   position: relative;
   min-height: 300px;
-  overflow: hidden;
   padding: 30px;
   transition: height 0.3s ease;
 }
@@ -55,6 +54,36 @@
 
 .angular-google-map-container {
   height: 400px;
+}
+
+.choose-activity-type {
+  padding: 15px;
+
+  .row:first-child {
+    margin-bottom: 30px;
+  }
+
+  .btn {
+    padding: 25px;
+    h3 {
+      margin: 5px 0 0;
+    }
+  }
+
+}
+
+.success-icon {
+  margin: 20px auto;
+  width: 100px;
+  height: 100px;
+  .glyphicon {
+    font-size: 72px;
+    color: #fff;
+  }
+
+  background-color: $cs-green;
+  border-radius: 110px;
+  padding: 15px;
 }
 
 // TODO Fix sliding animations

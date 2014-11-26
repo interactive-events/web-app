@@ -1,0 +1,8 @@
+<div class="form-group">
+    <label for="beacon">Beacon for registering attendance</label>
+    <select id="beacon" ng-model="formData.beacon" class="form-control" ng-options="beacon.id as beacon.name for beacon in beacons">
+        <option value="">-- Choose a beacon --</option>
+    </select>
+</div>
+
+<button type="submit" class="btn btn-success pull-right">Save event</button>

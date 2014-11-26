@@ -1,27 +1,30 @@
 <div class="new-event-wizard form-wrap">
-    <header><h1>New event</h1>
+    <div class="wizard" ng-show="!eventCreated">
+        <header><h1>New event</h1>
 
-        <!-- the links to our nested states using relative paths -->
-        <!-- add the active class if the state matches our ui-sref -->
-        <nav>
-            <ul class="pagination">
-                <li ui-sref-active="active"><a ui-sref="app.admin.events.new-event.step1">Basics</a></li>
-                <li ui-sref-active="active"><a ui-sref="app.admin.events.new-event.step2">Activities</a></li>
-                <li ui-sref-active="active"><a ui-sref="app.admin.events.new-event.step3">People</a></li>
-                <li ui-sref-active="active"><a ui-sref="app.admin.events.new-event.step3">Beacons</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- use ng-submit to catch the form submission and use our Angular function -->
-    <form id="signup-form" ng-submit="processForm()">
-
-        <!-- our nested state views will be injected here -->
-        <div id="form-views" ui-view></div>
-    </form>
-
-    <div>
-        <h4>Form data</h4>
-    <pre>{{ formData | json }}</pre>
+            <!-- the links to our nested states using relative paths -->
+            <!-- add the active class if the state matches our ui-sref -->
+            <nav>
+                <ul class="pagination">
+                    <li ui-sref-active="active"><a ui-sref="app.admin.events.new-event.step1">Basics</a></li>
+                    <li ui-sref-active="active"><a ui-sref="app.admin.events.new-event.step2">Activities</a></li>
+                    <li ui-sref-active="active"><a ui-sref="app.admin.events.new-event.step3">People</a></li>
+                    <li ui-sref-active="active"><a ui-sref="app.admin.events.new-event.step4">Beacons</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- use ng-submit to catch the form submission and use our Angular function -->
+        <form id="signup-form" ng-submit="processForm()">
+            <!-- our nested state views will be injected here -->
+            <div id="form-views" ui-view></div>
+        </form>
+        <div>
+            <pre>{{ formData | json }}</pre>
+        </div>
+    </div>
+    <div class="complete text-center" ng-show="eventCreated">
+        <div class="success-icon"><span class="glyphicon glyphicon-ok"></span></span>
+            <a class="btn btn-default">Go to event</a>
+        </div>
     </div>
 </div>

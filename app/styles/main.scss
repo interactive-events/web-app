@@ -24,7 +24,6 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "newEventWizard";
 @import "misc";
 
-
 //TODO Move to separate typography file
 h1, h2, h3 h4, h5, h6 {
   font-family: Lato;
@@ -33,17 +32,19 @@ h1, h2, h3 h4, h5, h6 {
 }
 
 .poll header.main {
-  display:none;
+  display: none;
 }
 
-body.poll { padding-top: 20px; }
+body.poll {
+  padding-top: 20px;
+}
 
 .navbar-toggle {
   margin-left: 8px;
 }
 
 // Fix for inline form elements inside block form
-.form-inline .form-group{
+.form-inline .form-group {
   margin-left: 0;
   margin-right: 0;
 }
@@ -51,4 +52,14 @@ body.poll { padding-top: 20px; }
 .modal.fade:not(.in) .modal-dialog {
   -webkit-transform: translate3d(0, 0, 0), transform3d;
   transform: translate3d(0, 0, 0);
+}
+
+pre {
+  display: none !important;
+  margin-top: 10px;
+  text-align: left !important;
+}
+
+body.show-debug-info pre {
+  display: block !important;
 }
