@@ -64,7 +64,7 @@ angular
             .state('app.admin.events', {
                 url: '/events',
                 template: '<ui-view/>',
-                abstract: true,
+                abstract: true
             })
             .state('app.admin.events.list', {
                 url: '',
@@ -176,6 +176,38 @@ angular
             description: 'Show debug info',
             callback: function () {
                 $('body').toggleClass('show-debug-info');
+            }
+        });
+
+        hotkeys.add({
+            combo: 'ctrl+1',
+            description: 'Go to dashboard',
+            callback: function () {
+                $state.go('app.admin.dashboard');
+            }
+        });
+
+        hotkeys.add({
+            combo: 'ctrl+2',
+            description: 'Go to events',
+            callback: function () {
+                $state.go('app.admin.events.list');
+            }
+        });
+
+        hotkeys.add({
+            combo: 'ctrl+3',
+            description: 'Go to people',
+            callback: function () {
+                $state.go('app.admin.people');
+            }
+        });
+
+        hotkeys.add({
+            combo: 'ctrl+4',
+            description: 'Go to beacons',
+            callback: function () {
+                $state.go('app.admin.beacons');
             }
         });
 
@@ -359,14 +391,14 @@ angular
 
         return socket;
     })
-        .value('cgBusyDefaults', {
-            message: 'Loading',
-            delay: 800,
-        })
+    .value('cgBusyDefaults', {
+        message: 'Loading',
+        delay: 800,
+    })
 
 // Convert ui states into classes that can be applied to <body>
-        .filter('stateToClasses', function () {
-            return function (input) {
-                return input.replace(/\./g, ' ');
-            };
-        });
+    .filter('stateToClasses', function () {
+        return function (input) {
+            return input.replace(/\./g, ' ');
+        };
+    });
