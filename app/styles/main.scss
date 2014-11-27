@@ -67,3 +67,39 @@ body.show-debug-info pre {
 .cfp-hotkeys-close {
   line-height: 0.8;
 }
+
+.ng-hide {
+  opacity: 0;
+}
+
+.ng-hide-remove,
+.ng-hide-add {
+  display: block !important;
+}
+
+.ng-hide-remove {
+  transition: all ease 200ms;
+}
+
+.ng-hide-add {
+  transition: all ease 0ms;
+}
+
+/*
+[ui-view].ng-enter, [ui-view].ng-leave {
+  -webkit-transition:all .5s ease-in-out;
+  -moz-transition:all .5s ease-in-out;
+  -o-transition:all .5s ease-in-out;
+  transition:all .5s ease-in-out;
+}
+
+[ui-view].ng-enter {
+  opacity: 0;
+  transform:scale3d(0.95, 0.95, 0.5);
+}
+
+[ui-view].ng-enter-active {
+  opacity: 1;
+  transform:scale3d(1, 1, 1);
+}
+*/

@@ -1,12 +1,10 @@
-<div class="row">
+<div class="row activity" ng-repeat="activity in event.activities">
     <div class="col-xs-1">
         <span class="module-icon glyphicon glyphicon-stats"></span>
     </div>
     <div class="col-xs-8">
-        <h3>Poll 1</h3>
-
-        <p><strong>Question: </strong>What is your favorite pet?</p>
-
+        <h3>{{ activity.name }}</h3>
+        <p><strong>Question: </strong>{{ activity.customData.pollDescription.question }}</p>
         <p><strong>Status: </strong><span class="poll-status label label-default">not started</span></p>
     </div>
     <div class="col-xs-3 text-right">

@@ -96,7 +96,8 @@ angular.module('ieventsWebApp')
         $scope.processForm = function () {
             var baseEvents = Restangular.all('events');
             baseEvents.post($scope.formData).then(function(response){
-                console.log(response);
+                $scope.eventCreated = true;
+                $scope.createdEventId = response;
             },function(error){
                 console.log(error);
             });

@@ -87,12 +87,12 @@ angular
                 controller: 'SingleEventCtrl'
             })
             .state('app.admin.events.single-event.beacons', {
-                url: '/people',
+                url: '/beacons',
                 templateUrl: '/views/single-event/beacons.html',
                 controller: 'SingleEventCtrl'
             })
             .state('app.admin.events.single-event.settings', {
-                url: '/people',
+                url: '/settings',
                 templateUrl: '/views/single-event/settings.html',
                 controller: 'SingleEventCtrl'
             })
@@ -212,7 +212,7 @@ angular
         });
 
         $rootScope.clientId = '546db8beec2e840000faccf8';
-        $rootScope.clientSecret = 'Hello';
+        $rootScope.clientSecret = 'Not a secret';
         $rootScope.auth = principal;
         $rootScope.$state = $state;
 
@@ -228,7 +228,6 @@ angular
                 principal.authenticate(null);
                 $state.go('app.login');
             }
-
             return true; // error not handled
         });
 

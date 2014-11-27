@@ -1,5 +1,5 @@
 <div class="new-event-wizard form-wrap">
-    <div class="wizard" ng-show="!eventCreated">
+    <div class="wizard" ng-if="!eventCreated">
         <header><h1>New event</h1>
 
             <!-- the links to our nested states using relative paths -->
@@ -22,9 +22,13 @@
             <pre>{{ formData | json }}</pre>
         </div>
     </div>
-    <div class="complete text-center" ng-show="eventCreated">
-        <div class="success-icon"><span class="glyphicon glyphicon-ok"></span></span>
-            <a class="btn btn-default">Go to event</a>
+    <div class="complete text-center" ng-if="eventCreated">
+        <h1 class="text-center">Event created</h1>
+        <div class="success-icon">
+            <span class="glyphicon glyphicon-ok"></span>
         </div>
+        <p class="text-center">
+            <a class="btn btn-default" ng-href="/events/{{createdEventId}}/">Go to event</a>
+        </p>
     </div>
 </div>

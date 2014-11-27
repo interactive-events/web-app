@@ -50,6 +50,7 @@ header.section {
 }
 
 .event-stats {
+  min-height: 108px;
   text-align: center;
   span {
     font-size: 42px;
@@ -63,6 +64,7 @@ header.section {
   }
 }
 
+/* /events/5639s90sbadbab */
 .single-event {
   .nav-tabs {
     h4 {
@@ -83,6 +85,17 @@ header.section {
     }
     .table:last-child {
       margin-bottom: 0;
+    }
+
+    .event-info {
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
+    .activity:not(:last-child) {
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
     }
   }
 }
