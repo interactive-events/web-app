@@ -1,0 +1,25 @@
+<div class="container">
+    <h1 class="page-header">Activities</h1>
+
+    <div class="panel panel-default" ng-repeat="activity in event.activities">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ activity.name }} <span class="poll-status label label-default pull-right">not started</span></h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <p><strong>Question: </strong>{{ activity.customData.pollDescription.question }}</p>
+                </div>
+                <div class="col-sm-6">
+                    <div class="btn-group pull-right" role="group">
+                        <button type="button" class="btn btn-default">Start voting</button>
+                        <button type="button" class="btn btn-default" ui-sref='app.admin.events.presenterMode.single-activity({activityId: activity._id})'>View
+                            results
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <pre>{{ activity | json }}</pre>
+        </div>
+    </div>
+</div>

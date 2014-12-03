@@ -1,0 +1,23 @@
+body.presenterMode {
+  height: 100%;
+  padding-top: 70px;
+  header.main {
+    display: none;
+  }
+  .container {
+    max-width: 560px;
+  }
+}
+
+#pollChart {
+  margin-top: 46px;
+  height: 100%;
+}
+
+.chart-container {
+  top: 46px;
+  left: 0;
+  right: 0;
+  bottom: 100px;
+  position: fixed;
+}

@@ -39,6 +39,7 @@ module.exports = function (config) {
             '../bower_components/angular-google-maps/dist/angular-google-maps.js',
             '../bower_components/angularjs-geolocation/src/geolocation.js',
             '../bower_components/angular-hotkeys/build/hotkeys.min.js',
+            '../bower_components/angular-fullscreen/src/angular-fullscreen.js',
             '../bower_components/angular-mocks/angular-mocks.js',
             // endbower
             '../app/scripts/**/*.js',

@@ -21,7 +21,8 @@ angular
         'btford.socket-io',
         'uiGmapgoogle-maps',
         'geolocation',
-        'cfp.hotkeys'
+        'cfp.hotkeys',
+        'FBAngular'
     ])
 
     .config(function ($urlRouterProvider, $locationProvider, $stateProvider, uiGmapGoogleMapApiProvider) {
@@ -31,6 +32,9 @@ angular
         $stateProvider.state('app', {
             'abstract': true,
             template: '<ui-view/>',
+            controller : function($rootScope){
+                $rootScope.showHeader = true;
+            },
             resolve: {
                 authorize: ['authorization',
                     function (authorization) {
@@ -100,6 +104,26 @@ angular
                 url: '/dashboard',
                 templateUrl: '/views/dashboard.html',
                 controller: 'DashboardCtrl'
+            })
+            .state('app.admin.events.presenterMode', {
+                url: '/:eventId/presenter',
+                templateUrl: '/views/single-event/presenter/presenterMode.html',
+                controller: 'PresentermodeCtrl'
+            })
+            .state('app.admin.events.presenterMode.list', {
+                url: '/list',
+                templateUrl: '/views/single-event/presenter/list.html',
+                controller: 'PresentermodeCtrl'
+            })
+            .state('app.admin.events.presenterMode.single-activity', {
+                url: '/activities/:activityId',
+                templateUrl: '/views/single-event/presenter/view-activity.html',
+                controller: 'PresentermodeviewactivityCtrl'
+            })
+            .state('view-activity', {
+                url: '/events/:eventId/activities/:activityId',
+                templateUrl: '/views/single-event/presenter/view-activity.html',
+                controller: 'PresentermodeviewactivityCtrl'
             })
             .state('app.admin.events.new-event', {
                 url: '/new',
@@ -223,7 +247,7 @@ angular
             if (response.status === 403) {
                 //TODO Implement refresh token
                 return false; // error handled
-            } else if (response.status === 500 && response.data.message && response.data.message === 'expired') {
+            } else if (response.status === 401 || (response.status === 500 && response.data.message && response.data.message === 'expired')) {
                 // Invalidate login
                 principal.authenticate(null);
                 $state.go('app.login');
@@ -379,17 +403,6 @@ angular
         };
     }
 )
-// Setup socket.io
-    .factory('socket', function (socketFactory) {
-
-        /* global io: false */
-        var ioSocket = io.connect('http://interactive-events.elasticbeanstalk.com/events/1/modules/1');
-        var socket = socketFactory({
-            ioSocket: ioSocket
-        });
-
-        return socket;
-    })
     .value('cgBusyDefaults', {
         message: 'Loading',
         delay: 800,

@@ -18,7 +18,8 @@ function parralaxBackground(){
 }
 
 angular.module('ieventsWebApp')
-    .controller('HomeCtrl', function ($scope) {
+    .controller('HomeCtrl', function ($scope, $rootScope) {
+        console.log($rootScope.showHeader);
         setTimeout(function () {
             $('.phone').addClass('turn-on');
         }, 3000);

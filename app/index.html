@@ -24,7 +24,7 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <header class="main ng-cloak" ng-controller="HeaderCtrl">
+    <header class="main ng-cloak" ng-show="showHeader" ng-cloak ng-controller="HeaderCtrl">
         <div class="container">
             <div class="logo">
                 <a ui-sref="app.home">
@@ -129,6 +129,7 @@
     <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
     <script src="bower_components/angularjs-geolocation/src/geolocation.js"></script>
     <script src="bower_components/angular-hotkeys/build/hotkeys.min.js"></script>
+    <script src="bower_components/angular-fullscreen/src/angular-fullscreen.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -148,6 +149,8 @@
         <script src="scripts/controllers/poll.js"></script>
         <script src="scripts/controllers/mapmodal.js"></script>
         <script src="scripts/controllers/neweventaddactivitymodal.js"></script>
+        <script src="scripts/controllers/presentermode.js"></script>
+        <script src="scripts/controllers/presentermodeviewactivity.js"></script>
         <!-- endbuild -->
 </body>
 </html>

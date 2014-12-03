@@ -22,14 +22,17 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "dashboard";
 @import "events";
 @import "newEventWizard";
+@import "presenterMode";
 @import "misc";
 
 //TODO Move to separate typography file
-h1, h2, h3 h4, h5, h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: Lato;
   font-weight: bold;
   text-rendering: optimizeLegibility;
 }
+
+html { height: 100%; }
 
 .poll header.main {
   display: none;

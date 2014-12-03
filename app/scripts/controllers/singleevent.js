@@ -8,12 +8,16 @@
  * Controller of the ieventsWebApp
  */
 angular.module('ieventsWebApp')
-    .controller('SingleEventCtrl', function ($scope, $stateParams, $window, Restangular) {
+    .controller('SingleEventCtrl', function ($scope, $state, $stateParams, $window, Restangular) {
         $scope.eventId = $stateParams.eventId;
         $scope.loaded = false;
 
         $scope.eventPromise = Restangular.one('events', $scope.eventId).get();
-        $scope.eventPromise.then(function () {
+        $scope.eventPromise.then(function (data) {
+            $scope.event = data;
+            angular.forEach($scope.event.activities, function(activity){
+                activity.customData = angular.fromJson(activity.customData);
+            });
             $scope.loaded = true;
             if (isStarted()) {
                 $scope.event.status = {name: 'ongoing', class: 'success', ongoing: true};
@@ -35,9 +39,13 @@ angular.module('ieventsWebApp')
         $scope.event.status = {name: 'planned', class: 'default', ongoing: false};
 
         $scope.openPresenterView = function () {
-            var left = screen.width / 2 - 200,
-                top = screen.height / 2 - 250;
-            $window.open('/events/123/modules/1/push', '', 'top=' + top + ',left=' + left + ',width=600,height=600');
+            /*var left = screen.width / 2 - 200,
+                top = screen.height / 2 - 250,
+                width = 600,
+                height = 600,*/
+                var url = '/events/'+ $scope.eventId +'/presenter/list';
+            //$window.open(url, '', 'top=' + top + ',left=' + left + ',width='+ width +',height='+ height);
+            $window.location.href = url;
         };
 
         $scope.startPoll = function () {
