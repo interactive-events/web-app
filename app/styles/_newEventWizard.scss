@@ -76,14 +76,15 @@
   margin: 20px auto;
   width: 100px;
   height: 100px;
-  .glyphicon {
-    font-size: 72px;
-    color: #fff;
-  }
-
   background-color: $cs-green;
   border-radius: 110px;
   padding: 15px;
+
+  .glyphicon {
+    font-size: 55px;
+    line-height: 68px;
+    color: #fff;
+  }
 }
 
 // TODO Fix sliding animations

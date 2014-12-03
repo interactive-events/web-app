@@ -10,8 +10,11 @@ body.presenterMode {
 }
 
 #pollChart {
-  margin-top: 46px;
   height: 100%;
+}
+
+.presenterMode #pollChart {
+  margin-top: 46px;
 }
 
 .chart-container {
