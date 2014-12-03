@@ -117,12 +117,23 @@ angular
             })
             .state('app.admin.events.presenterMode.single-activity', {
                 url: '/activities/:activityId',
-                templateUrl: '/views/single-event/presenter/view-activity.html',
+                templateUrl: '/views/poll/view-activity.html',
                 controller: 'PresentermodeviewactivityCtrl'
             })
+            // This route groups voting / viewing results
             .state('view-activity', {
                 url: '/events/:eventId/activities/:activityId',
-                templateUrl: '/views/single-event/presenter/view-activity.html',
+                abstract: true,
+                template: '<ui-view/>',
+            })
+            .state('view-activity.vote', {
+                url: '/vote',
+                templateUrl: '/views/poll/vote.html',
+                controller: 'VoteCtrl'
+            })
+            .state('view-activity.results', {
+                url: '/results',
+                templateUrl: '/views/poll/view-activity.html',
                 controller: 'PresentermodeviewactivityCtrl'
             })
             .state('app.admin.events.new-event', {
