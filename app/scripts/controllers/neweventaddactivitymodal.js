@@ -23,7 +23,8 @@ angular.module('ieventsWebApp')
                             { id: 0 }
                         ]
                     }
-                }
+                },
+                state: 'planned'
             }
         ];
 
