@@ -9,6 +9,9 @@
  */
 angular.module('ieventsWebApp')
   .controller('HeaderCtrl', function ($scope, $state, $location, principal) {
+  		principal.identity().then(function(user) {
+  			$scope.user = user;
+  		});
         $scope.isActive = function (viewLocation) {
             return viewLocation === $location.path();
         };

@@ -34,4 +34,11 @@ header.main {
   .not-logged-in {
     padding-top: 9px;
   }
+
+  .capitalize-first-letter {
+    display: inline-block;
+  }
+  .capitalize-first-letter:first-letter {
+    text-transform: uppercase;
+  }
 }

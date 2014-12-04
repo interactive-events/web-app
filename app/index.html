@@ -54,7 +54,7 @@
                 <button ui-sref="app.register" type="button" class="btn btn-success">Register</button>
             </div>
             <div class="profile-info pull-right ng-cloak" ng-if="auth.isAuthenticated()">
-                <span class=" welcome">Welcome, Bob </span>
+                <span class=" welcome" ng-if="user.name">Welcome, <span class="capitalize-first-letter">{{user.name}}</span> </span>
                 <div class="btn-group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                         <span class="glyphicon glyphicon-user"></span> <span class="caret"></span>
