@@ -29,7 +29,8 @@ angular.module('ieventsWebApp')
                 username: email,
                 password: password
             };
-            token.post(tokenRequest).then(function (tokenResponse) {
+            $scope.loginPromise = token.post(tokenRequest);
+                $scope.loginPromise.then(function (tokenResponse) {
                 // Success
                 $scope.wrongCredentials = false;
                 // Create user object and store it in cookie

@@ -57,7 +57,7 @@ angular.module('ieventsWebApp')
         };
 
         $scope.startEvent = function () {
-            Restangular.one('events', $scope.eventId).put({started: true}).then(function () {
+            Restangular.one('events', $scope.eventId).put({started: false}).then(function () {
                 $scope.event.status = {name: 'ongoing', class: 'success', ongoing: true};
                 /* global io: false */
                 var eventSocket = io.connect('http://interactive-events.elasticbeanstalk.com/events/' + $scope.eventId);

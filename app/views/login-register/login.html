@@ -5,7 +5,7 @@
         <div class="alert alert-warning" ng-show="wrongCredentials" role="alert">
             <strong>Oops!</strong> Those credentials are wonky
         </div>
-        <form cass="login-form" novalidate ng-submit="loginFormSubmit(email,password)">
+        <form cass="login-form" novalidate ng-submit="loginFormSubmit(email,password)" cg-busy="{promise:loginPromise,message:'Logging in',delay:0}">
             <div class="form-group">
                 <label for="email">Email</label>
                 <input id="email" class="form-control input-lg username" ng-model="email" name="email" ng-required placeholder="Your email" type="text"
