@@ -20,7 +20,8 @@ angular.module('ieventsWebApp')
                 customData: {
                     pollDescription: {
                         answers: [
-                            { id: 0 }
+                            { id: '0' },
+                            { id: '1' }
                         ]
                     },
                     eventFinished : false,
@@ -42,7 +43,7 @@ angular.module('ieventsWebApp')
         };
 
         $scope.addAnswer = function(){
-            $scope.activity.customData.pollDescription.answers.push({id: $scope.activity.customData.pollDescription.answers.length});
+            $scope.activity.customData.pollDescription.answers.push({id: $scope.activity.customData.pollDescription.answers.length.toString()});
         };
 
         $scope.ok = function () {
