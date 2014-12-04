@@ -20,7 +20,8 @@ angular.module('ieventsWebApp')
                 customData: {
                     pollDescription: {
                         answers: [
-                            { id: 0 }
+                            { id: '0' },
+                            { id: '1' }
                         ]
                     },
                     eventFinished : false,
@@ -42,13 +43,13 @@ angular.module('ieventsWebApp')
         };
 
         $scope.addAnswer = function(){
-            $scope.activity.customData.pollDescription.answers.push({id: $scope.activity.customData.pollDescription.answers.length});
+            $scope.activity.customData.pollDescription.answers.push({id: $scope.activity.customData.pollDescription.answers.length.toString()});
         };
 
         $scope.ok = function () {
             for(var i=0; i<$scope.activity.customData.pollDescription.answers.length; i++) {
                 $scope.activity.customData.pollResults.votes.push({
-                    answerId: $scope.activity.customData.pollDescription.answers[i].id, 
+                    answerId: $scope.activity.customData.pollDescription.answers[i].id,
                     votes: 0
                 });
             }
