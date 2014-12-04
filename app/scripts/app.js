@@ -118,7 +118,7 @@ angular
             .state('app.admin.events.presenterMode.single-activity', {
                 url: '/activities/:activityId',
                 templateUrl: '/views/poll/view-activity.html',
-                controller: 'PresentermodeviewactivityCtrl'
+                controller: 'ViewPollCtrl'
             })
             // This route groups voting / viewing results
             .state('view-activity', {
@@ -134,7 +134,7 @@ angular
             .state('view-activity.results', {
                 url: '/results',
                 templateUrl: '/views/poll/view-activity.html',
-                controller: 'PresentermodeviewactivityCtrl'
+                controller: 'ViewPollCtrl'
             })
             .state('app.admin.events.new-event', {
                 url: '/new',
