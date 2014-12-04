@@ -13,7 +13,7 @@ angular.module('ieventsWebApp')
         var baseActivity = Restangular.one('events', $stateParams.eventId);
         baseActivity.one('activities', $stateParams.activityId).get().then(function (data) {
           //TODO Vote or redirect to results
-
+          $scope.activity = data;
           if (data.customData.hasVoted === true) {
             // user already voted in this poll - go to results-view
             $state.go('view-activity.results');
