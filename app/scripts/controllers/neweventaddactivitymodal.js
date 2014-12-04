@@ -48,7 +48,7 @@ angular.module('ieventsWebApp')
         $scope.ok = function () {
             for(var i=0; i<$scope.activity.customData.pollDescription.answers.length; i++) {
                 $scope.activity.customData.pollResults.votes.push({
-                    answerId: $scope.activity.customData.pollDescription.answers[i].id, 
+                    answerId: $scope.activity.customData.pollDescription.answers[i].id,
                     votes: 0
                 });
             }

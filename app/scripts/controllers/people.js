@@ -16,7 +16,7 @@ angular.module('ieventsWebApp')
         ];
         var basePeople = Restangular.one('users');
 
-        $scope.peoplePromise = basePeople.get();
+        $scope.peoplePromise = basePeople.get({limit: 100});
         $scope.peopleResponse = $scope.peoplePromise.$object;
 
     });

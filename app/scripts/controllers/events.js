@@ -9,6 +9,6 @@
  */
 angular.module('ieventsWebApp')
     .controller('EventsCtrl', function ($scope, Restangular) {
-        $scope.eventsPromise = Restangular.one('events').get();
+        $scope.eventsPromise = Restangular.one('events').get({limit: 100});
         $scope.eventsResponse = $scope.eventsPromise.$object;
     });

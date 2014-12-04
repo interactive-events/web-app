@@ -4,16 +4,13 @@
         <div class="navbar-header">
             <a class="navbar-brand" ui-sref="app.admin.events.presenterMode.list({eventId: event.id})">{{event.title}}</a>
         </div>
-
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
-            <ul class="nav navbar-nav">
-                <!--<li class="active"><a href="#">Home</a></li>-->
-            </ul>
-            <a class="pull-right btn btn-default navbar-btn" ng-click="toggleFullScreen()">
+        <ul class="nav navbar-nav">
+            <!--<li class="active"><a href="#">Home</a></li>-->
+            <li class="pull-right"><a class="pull-right btn btn-default navbar-btn" ng-click="toggleFullScreen()">
                 <span ng-if="!fs.isEnabled()" class="glyphicon glyphicon-fullscreen"></span>
                 <span ng-if="fs.isEnabled()" class="glyphicon glyphicon-remove"></span>
-            </a>
-        </div>
+            </a></li>
+        </ul>
     </div>
 </nav>
 <ui-view/>

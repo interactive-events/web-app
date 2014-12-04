@@ -119,7 +119,6 @@ angular.module('ieventsWebApp')
                     },
                     plotOptions: {
                         pie: {
-                            showInLegend: true,
                             allowPointSelect: true,
                             cursor: 'pointer',
                             depth: 35,

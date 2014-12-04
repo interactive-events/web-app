@@ -5,11 +5,14 @@
     <div class="col-xs-8">
         <h3>{{ activity.name }}</h3>
         <p><strong>Question: </strong>{{ activity.customData.pollDescription.question }}</p>
-        <p><strong>Status: </strong><span class="poll-status label label-default">not started</span></p>
+        <p><strong>Status: </strong>
+            <span ng-if="activity.state == 'planned'" class="poll-status label label-default">not started</span>
+            <span ng-if="activity.state == 'started'" class="poll-status label label-success">voting in progress</span>
+            <span ng-if="activity.state == 'ended'" class="poll-status label label-danger">ended</span>
+        </p>
     </div>
     <div class="col-xs-3 text-right">
-        <p><a class="btn btn-primary" ng-click="startPoll()">Start poll</a></p>
-        <a class="btn btn-default" ng-click="startPoll()">Poll settings</a>
+        <p><a class="btn btn-primary" ng-click="startPoll(activity._id, $index)">Start poll</a></p>
     </div>
     <hr/>
 </div>
