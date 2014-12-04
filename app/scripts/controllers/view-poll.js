@@ -8,7 +8,7 @@
  * Controller of the ieventsWebApp
  */
 
-//TODO Generalize for use with different modules.
+// TODO Generalize for use with different modules.
 angular.module('ieventsWebApp')
     .controller('ViewPollCtrl', function ($scope, $rootScope, $state, $stateParams, Restangular, $interval) {
 
