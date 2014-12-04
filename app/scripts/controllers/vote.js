@@ -8,11 +8,11 @@
  * Controller of the ieventsWebApp
  */
 angular.module('ieventsWebApp')
-  .controller('VoteCtrl', function ($scope, Restangular, $stateParams, $state, $timeout) {
-
+  .controller('VoteCtrl', function ($scope, Restangular, $stateParams, $state, $timeout, $location) {
+    console.log('access_token=',($location.search()).access_token);
     // Get the activity
     var baseActivity = Restangular.one('events', $stateParams.eventId).one('activities', $stateParams.activityId);
-    baseActivity.get().then(function (data) {
+    baseActivity.get({access_token: ($location.search()).access_token}).then(function (data) {
       //TODO Vote or redirect to results
       $scope.activity = data;
       if (data.customData.hasVoted === true) {
@@ -28,7 +28,7 @@ angular.module('ieventsWebApp')
       //baseActivity.one('vote').withHttpConfig({ transformRequest: angular.identity }).customPUT("", null, { "Content-Type": undefined }, formData);
 
       var vote = {answerId: answerId};
-      baseActivity.all('vote').post(vote).then(function (result) {
+      baseActivity.all('vote', {access_token: ($location.search()).access_token}).post(vote).then(function (result) {
         $scope.voteRegistered = true;
         $timeout($scope.goToResults(), 2000);
         console.log(result);

@@ -35,12 +35,14 @@ angular.module('ieventsWebApp')
                 $scope.wrongCredentials = false;
                 // Create user object and store it in cookie
                 var userObj = {
-                    id: 1,
+                    id: tokenResponse.user_id,
+                    name: tokenResponse.user_name,
                     username: email,
                     roles: ['admin'],
                     accessToken: tokenResponse.access_token,
                     refreshToken: tokenResponse.refresh_token
                 };
+                console.log(userObj);
 
                 principal.authenticate(userObj);
 
