@@ -134,7 +134,7 @@ angular
             .state('view-activity.results', {
                 url: '/results',
                 templateUrl: '/views/poll/view-activity.html',
-                controller: 'PresentermodeviewactivityCtrl'
+                controller: 'ViewPollCtrl'
             })
             .state('app.admin.events.new-event', {
                 url: '/new',

@@ -10,7 +10,9 @@
 
 //TODO Generalize for use with different modules.
 angular.module('ieventsWebApp')
-    .controller('PresentermodeviewactivityCtrl', function ($scope, $state, $stateParams, Restangular, $interval) {
+    .controller('ViewPollCtrl', function ($scope, $rootScope, $state, $stateParams, Restangular, $interval) {
+
+        $rootScope.showHeader = true;
 
         $scope.activityPromise = Restangular.one('events', $stateParams.eventId).one('activities', $stateParams.activityId).get();
         $scope.activityPromise.then(function (data) {
@@ -27,7 +29,7 @@ angular.module('ieventsWebApp')
                 /* global angular: false */
                 angular.forEach($scope.activity.pollDescription.answers, function (value, index) {
                     var dataItem = {name: value.answer};
-                    angular.forEach($scope.activity.pollResults.votes, function (value2, index2) {
+                    angular.forEach($scope.activity.pollResults.votes, function (value2) {
                         if (value.id.toString() === value2.answerId) {
                             dataItem.y = parseFloat((value2.votes / numVotes) * 100);
                             dataItem.name = dataItem.name + ': ' + value2.votes;
@@ -38,34 +40,34 @@ angular.module('ieventsWebApp')
             }
 
             /*$scope.activity = {
-                hasVoted: true,
-                eventFinished: false,
-                pollDescription: {
-                    question: 'What is love?',
-                    answers: [
-                        {id: 0, answer: 'Yes'},
-                        {id: 1, answer: 'No'},
-                        {id: 2, answer: 'Baby dont hurt me'}
-                    ]
-                },
-                pollResults: {
-                    numberOfVotes: 389,
-                    votes: [
-                        {
-                            answerId: 0,
-                            votes: 123
-                        },
-                        {
-                            answerId: 1,
-                            votes: 56
-                        },
-                        {
-                            answerId: 2,
-                            votes: 210
-                        }
-                    ]
-                }
-            };*/
+             hasVoted: true,
+             eventFinished: false,
+             pollDescription: {
+             question: 'What is love?',
+             answers: [
+             {id: 0, answer: 'Yes'},
+             {id: 1, answer: 'No'},
+             {id: 2, answer: 'Baby dont hurt me'}
+             ]
+             },
+             pollResults: {
+             numberOfVotes: 389,
+             votes: [
+             {
+             answerId: 0,
+             votes: 123
+             },
+             {
+             answerId: 1,
+             votes: 56
+             },
+             {
+             answerId: 2,
+             votes: 210
+             }
+             ]
+             }
+             };*/
 
             if ($state.is('view-activity')) {
                 console.log('VOTER');
@@ -73,6 +75,7 @@ angular.module('ieventsWebApp')
                 console.log('ADM');
             }
 
+            /* global io: false */
             var socket = io.connect('http://interactive-events.elasticbeanstalk.com/events/' + $stateParams.eventId);
 
             socket.on('vote', function (vote) {
@@ -136,8 +139,6 @@ angular.module('ieventsWebApp')
                     }
                 }
             };
-
             populateData();
-
         });
     });
