@@ -19,11 +19,16 @@ angular.module('ieventsWebApp')
         $scope.formData = {};
         $scope.eventCreated = false;
 
-        $scope.beacons = [
+       /* $scope.beacons = [
             {id:'XXX', name: 'Red beacon', uuid: 'OUHlkvsl8hj93hlIKuhlkuHLkugliuHGLKu9h'},
             {id:'546da9941125e00000f3a0f3' , name: 'iPhone beacon'},
             {id:'YYY', name: 'Bacon beacon', uuid: 'o8upnao3wuvpobULKUJHLBKH8bhl82hbk8qhdb'},
-        ];
+        ];*/
+
+        var baseBeacons = Restangular.one('beacons');
+
+        $scope.beaconsPromise = baseBeacons.get();
+        $scope.beacons = $scope.beaconsPromise.$object;
 
         $scope.modules = [];
         $scope.modules['546da619aebf240000d8a1fe'] = { name: 'Poll' };
