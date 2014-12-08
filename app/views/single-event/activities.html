@@ -7,7 +7,7 @@
         <p><strong>Question: </strong>{{ activity.customData.pollDescription.question }}</p>
         <p><strong>Status: </strong>
             <span ng-if="activity.state == 'planned'" class="poll-status label label-default">not started</span>
-            <span ng-if="activity.state == 'started'" class="poll-status label label-success">voting in progress</span>
+            <span ng-if="activity.state == 'start'" class="poll-status label label-success">voting in progress</span>
             <span ng-if="activity.state == 'ended'" class="poll-status label label-danger">ended</span>
         </p>
     </div>
