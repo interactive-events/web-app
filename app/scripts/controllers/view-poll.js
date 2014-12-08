@@ -70,8 +70,29 @@ angular.module('ieventsWebApp')
             }
 
             /* global io: false */
-            var socket = io.connect(Restangular.configuration.baseUrl+'/events/' + $stateParams.eventId);
+            
+            var nsp = io.connect(Restangular.configuration.baseUrl+'/events/'+$stateParams.eventId+'/activities/'+$stateParams.activityId);
 
+            nsp.on('vote', function (vote) {
+                angular.forEach($scope.activity.pollResults.votes, function (value, index) {
+                    if (value.answerId.toString() === vote.answerId.toString()) {
+                        $scope.activity.pollResults.votes[index].votes+= 1;
+                    }
+                });
+                populateData();
+            });
+            nsp.on('joined', function () {
+                console.log('joined');
+            });
+            nsp.on('vote', function () {
+                console.log('left');
+            });
+
+            /*
+            var socket = io.connect(Restangular.configuration.baseUrl+'/events/' + $stateParams.eventId);
+            console.log("joinging namesoace ", Restangular.configuration.baseUrl+'/events/' + $stateParams.eventId)
+            console.log("joinging room", 'joinActivity'+$stateParams.activityId)    
+            socket.emit('joinActivity'+$stateParams.activityId);    
             socket.on('vote', function (vote) {
                 angular.forEach($scope.activity.pollResults.votes, function (value, index) {
                     if (value.id.toString() === vote.answerId) {
@@ -80,7 +101,7 @@ angular.module('ieventsWebApp')
                 });
                 populateData();
             });
-
+    */
             /*$interval(function () {
                 var vote = {answerId: 1};
                 angular.forEach($scope.activity.pollResults.votes, function (value, index) {
