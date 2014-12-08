@@ -101,7 +101,7 @@ angular.module('ieventsWebApp')
                 options: {
                     credits: false,
                     chart: {
-                        spacingTop: 40,
+                        spacingTop: 20,
                         type: 'pie',
                         options3d: {
                             enabled: true,
@@ -120,6 +120,7 @@ angular.module('ieventsWebApp')
                     plotOptions: {
                         pie: {
                             allowPointSelect: true,
+                            showInLegend: true,
                             cursor: 'pointer',
                             depth: 35,
                             dataLabels: {
@@ -129,9 +130,23 @@ angular.module('ieventsWebApp')
                                 style: {fontSize: '20px'}
                             }
                         }
+                    },
+                    legend: {
+                        enabled: false,
+                        itemStyle: {
+                            fontSize: '18px',
+                            layout: 'vertical'
+                        },
+                        itemMarginBottom: 8
                     }
                 }
             };
             populateData();
+
+            if($(window).width() < 600){
+                console.log($scope.pollChart);
+                $scope.pollChart.options.plotOptions.pie.dataLabels.enabled = false;
+                $scope.pollChart.options.legend.enabled = true;
+            }
         });
     });
