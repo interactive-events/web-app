@@ -1,19 +1,9 @@
 <h3>Select participants</h3>
-<table class="table ng-scope" cg-busy="peoplePromise" style="position: relative;">
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Id</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="obj in usersResponse.users">
-        <td><input type="checkbox" ng-model="selectedPeople[$index]" ng-change="selectPerson(obj.user)"/></td>
-        <td>{{ obj.user.username }}</td>
-        <td>{{ obj.user.id }}</td>
-    </tr>
-    </tbody>
-</table>
-
+<div class="checkbox" ng-repeat="obj in usersResponse.users">
+    <label>
+        <input type="checkbox" ng-model="selectedPeople[$index]" ng-change="selectPerson(obj.user)"/>
+        {{ obj.user.name }}
+    </label>
+</div>
 <a ui-sref="app.admin.events.new-event.step4" class="btn pull-right btn-primary">
     Next <span class="glyphicon glyphicon-arrow-right"></span>

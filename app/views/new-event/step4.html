@@ -1,6 +1,6 @@
 <div class="form-group">
     <label for="beacon">Beacon for registering attendance</label>
-    <select id="beacon" ng-model="formData.beacon" class="form-control" ng-options="beacon.id as beacon.name for beacon in beacons">
+    <select id="beacon" ng-model="formData.beacon" class="form-control" ng-options="beacon.beacon.id as beacon.beacon.description for beacon in beacons.beacons">
         <option value="">-- Choose a beacon --</option>
     </select>
 </div>

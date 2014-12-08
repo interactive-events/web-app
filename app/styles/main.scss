@@ -106,3 +106,21 @@ body.show-debug-info pre {
   transform:scale3d(1, 1, 1);
 }
 */
+
+.public-link {
+  z-index: 200;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #FFF;
+  font-size: 96px;
+  text-align: center;
+  line-height: 400px;
+  .btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+  }
+}
