@@ -13,6 +13,11 @@
     </div>
     <div class="col-xs-3 text-right">
         <p><a class="btn btn-primary" ng-click="startPoll(activity._id, $index)">Start poll</a></p>
+        <p><a class="btn btn-default" ng-click="getPublicLink(event.id, activity._id)">Get public link</a></p>
     </div>
     <hr/>
+</div>
+<div class="public-link" ng-if="publicLinkGenerated">
+    <a class="btn btn-default" ng-click="closePublicLink()"><span class="glyphicon glyphicon-remove"></span></a>
+    <a ng-href="{{ publicLink }}">http://bit.ly/XKJHKJZ</a>
 </div>

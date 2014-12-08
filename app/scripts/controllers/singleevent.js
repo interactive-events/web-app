@@ -41,10 +41,10 @@ angular.module('ieventsWebApp')
         function setupOngoingEvent() {
             $scope.event.status = {name: 'ongoing', class: 'success', ongoing: true};
             /* global io: false */
-            var eventSocket = io.connect(Restangular.configuration.baseUrl+'/events/' + $scope.eventId);
+            var eventSocket = io.connect(Restangular.configuration.baseUrl + '/events/' + $scope.eventId);
             eventSocket.on('new-participant', function (data) {
                 console.log("new-participant!", data, $scope.event.currentParticipants, $scope.event.currentParticipants.indexOf(data.userId));
-                if($scope.event.currentParticipants.indexOf(data.userId) < 0) {
+                if ($scope.event.currentParticipants.indexOf(data.userId) < 0) {
                     $scope.event.currentParticipants.push(data.userId);
                     $scope.$apply();
                 }
@@ -70,6 +70,33 @@ angular.module('ieventsWebApp')
             theActivity.state = 'start';
             theActivity.put();
             //$('.poll-status').removeClass('label-default').addClass('label-success').html('voting started');
+        };
+
+        $scope.getPublicLink = function (eventId, activityId) {
+            var access_token = 'kjsdhflskdjfhsfllksdjfhlsksldfkjshf',
+                user = 'VoteUser',
+                urlToShorten = 'http://interactive-events-web-app.s3-website-eu-west-1.amazonaws.com/events/' + eventId + '/activities/' + activityId + '/vote?access_token=' + access_token,
+                bitlyAPIUrl = 'https://api-ssl.bitly.com/v3/shorten?access_token=1c0fbcbd4b342099f7bec267360973271bc0c485&longUrl=';
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', bitlyAPIUrl + encodeURIComponent(urlToShorten));
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        console.log('Generated public link: ', xhr.responseText);
+                        $scope.publicLinkGenerated = true;
+                        $scope.publicLink = JSON.parse(xhr.responseText).data.url;
+                        $scope.$apply();
+                    } else {
+                        console.log('Oops', xhr);
+                    }
+                }
+            };
+            xhr.send();
+        };
+
+        $scope.closePublicLink = function(){
+            $scope.publicLinkGenerated = false;
         };
 
         $scope.startEvent = function () {
