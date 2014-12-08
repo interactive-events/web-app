@@ -107,12 +107,12 @@ angular
       })
       .state('app.admin.events.presenterMode', {
         url: '/:eventId/presenter',
-        templateUrl: '/views/single-event/presenter/presenterMode.html',
+        templateUrl: '/views/presenter/presenterMode.html',
         controller: 'PresentermodeCtrl'
       })
       .state('app.admin.events.presenterMode.list', {
         url: '/list',
-        templateUrl: '/views/single-event/presenter/list.html',
+        templateUrl: '/views/presenter/list.html',
         controller: 'PresentermodeCtrl'
       })
       .state('app.admin.events.presenterMode.single-activity', {

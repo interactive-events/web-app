@@ -71,17 +71,26 @@ angular.module('ieventsWebApp')
             }
 
             /* global io: false */
-            var socket = io.connect(Restangular.configuration.baseUrl + '/events/' + $stateParams.eventId);
+            
+            var nsp = io.connect(Restangular.configuration.baseUrl+'/events/'+$stateParams.eventId+'/activities/'+$stateParams.activityId);
 
-            socket.on('vote', function (vote) {
+            nsp.on('vote', function (vote) {
                 angular.forEach($scope.activity.pollResults.votes, function (value, index) {
-                    if (value.id.toString() === vote.answerId) {
-                        $scope.activity.pollResults.votes[index].votes += 1;
+                    if (value.answerId.toString() === vote.answerId.toString()) {
+                        $scope.activity.pollResults.votes[index].votes+= 1;
                     }
                 });
                 populateData();
             });
+            nsp.on('joined', function () {
+                console.log('joined');
+            });
+            nsp.on('vote', function () {
+                console.log('left');
+            });
+            // this is not a commentssdfsf
 
+            
             $scope.pollChart = {
                 title: {
                     text: $scope.activity.pollDescription.question,
