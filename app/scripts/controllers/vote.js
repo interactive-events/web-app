@@ -8,7 +8,9 @@
  * Controller of the ieventsWebApp
  */
 angular.module('ieventsWebApp')
-  .controller('VoteCtrl', function ($scope, Restangular, $stateParams, $state, $timeout, $location) {
+  .controller('VoteCtrl', function ($scope, $rootScope, Restangular, $stateParams, $state, $timeout, $location, $http, $cookieStore, $cookies) {
+
+        $rootScope.showHeader = false;
 
         var accessToken = ($location.search()).access_token;
         console.log('access_token is:', accessToken);
@@ -19,9 +21,13 @@ angular.module('ieventsWebApp')
     baseActivity.get().then(function (data) {
       //TODO Vote or redirect to results
       $scope.activity = data;
-      if (data.customData.hasVoted === true) {
+
+    console.log('cookies:', $cookies.hasVoted);
+      if ((data.customData.hasVoted === true) || ($cookies.hasVoted)) {
         // user already voted in this poll - go to results-view
         $state.go('view-activity.results');
+      } else {
+          $scope.showUI = true;
       }
     });
 
@@ -33,6 +39,8 @@ angular.module('ieventsWebApp')
 
       var vote = {answerId: answerId};
       baseActivity.all('vote').post(vote).then(function (result) {
+        $cookieStore.put('hasVoted', true);
+        $cookies.hasVoted = true;
         $scope.voteRegistered = true;
         $timeout($scope.goToResults(), 2000);
         console.log(result);

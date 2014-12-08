@@ -60,7 +60,7 @@ angular.module('ieventsWebApp')
         $scope.openPresenterView = function () {
             var left = screen.width / 2 - 200,
                 top = screen.height / 2 - 250,
-                width = 600,
+                width = 800,
                 height = 600,
                 url = '/events/' + $scope.eventId + '/presenter/list';
             $window.open(url, '', 'top=' + top + ',left=' + left + ',width=' + width + ',height=' + height);

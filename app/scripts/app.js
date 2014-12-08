@@ -83,22 +83,22 @@ angular
             .state('app.admin.events.single-event.activities', {
                 url: '/',
                 templateUrl: '/views/single-event/activities.html',
-                controller: 'SingleEventCtrl'
+                controller: ''
             })
             .state('app.admin.events.single-event.people', {
                 url: '/people',
                 templateUrl: '/views/single-event/people.html',
-                controller: 'SingleEventCtrl'
+                controller: ''
             })
             .state('app.admin.events.single-event.beacons', {
                 url: '/beacons',
                 templateUrl: '/views/single-event/beacons.html',
-                controller: 'SingleEventCtrl'
+                controller: ''
             })
             .state('app.admin.events.single-event.settings', {
                 url: '/settings',
                 templateUrl: '/views/single-event/settings.html',
-                controller: 'SingleEventCtrl'
+                controller: ''
             })
             .state('app.admin.dashboard', {
                 url: '/dashboard',
@@ -331,7 +331,7 @@ angular
                     $http.defaults.headers.common.Authorization = 'Bearer ' + identity.accessToken;
                 } else {
                     $cookieStore.remove('user');
-                    $http.defaults.headers.common.Authorization = '';
+                    //$http.defaults.headers.common.Authorization = '';
                 }
             },
             identity: function (force) {
