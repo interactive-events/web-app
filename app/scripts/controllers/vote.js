@@ -21,7 +21,9 @@ angular.module('ieventsWebApp')
     baseActivity.get().then(function (data) {
       //TODO Vote or redirect to results
       $scope.activity = data;
-      if (data.customData.hasVoted === true) {
+
+
+      if ((data.customData.hasVoted === true) || ($cookieStore.get('hasVoted'))) {
         // user already voted in this poll - go to results-view
         $state.go('view-activity.results');
       } else {
@@ -37,6 +39,7 @@ angular.module('ieventsWebApp')
 
       var vote = {answerId: answerId};
       baseActivity.all('vote').post(vote).then(function (result) {
+        $cookieStore.set('hasVoted');
         $scope.voteRegistered = true;
         $timeout($scope.goToResults(), 2000);
         console.log(result);
