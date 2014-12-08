@@ -9,6 +9,8 @@
  */
 angular.module('ieventsWebApp')
     .controller('SingleEventCtrl', function ($scope, $state, $stateParams, $window, Restangular) {
+
+
         $scope.eventId = $stateParams.eventId;
         $scope.loaded = false;
 
@@ -20,7 +22,8 @@ angular.module('ieventsWebApp')
             });
             $scope.loaded = true;
             if (isStarted()) {
-                $scope.event.status = {name: 'ongoing', class: 'success', ongoing: true};
+                $scope.startEvent();
+
             } else {
                 $scope.event.status = {name: 'planned', class: 'default', ongoing: false};
             }
@@ -33,6 +36,22 @@ angular.module('ieventsWebApp')
             } else {
                 return true;
             }
+        }
+
+        function setupOngoingEvent() {
+            $scope.event.status = {name: 'ongoing', class: 'success', ongoing: true};
+            /* global io: false */
+            var eventSocket = io.connect(Restangular.configuration.baseUrl+'/events/' + $scope.eventId);
+            console.log("namespace started");
+            eventSocket.on('new-participant', function (data) {
+                console.log("new-participant!", data, $scope.event.currentParticipants, $scope.event.currentParticipants.indexOf(data.userId));
+                if($scope.event.currentParticipants.indexOf(data.userId) < 0) {
+                    console.log("new-participant added", data.userId);
+                    $scope.event.currentParticipants.push(data.userId);
+                    console.log("added? ", $scope.event.currentParticipants);
+                    $scope.$apply();
+                }
+            });
         }
 
         $scope.event = $scope.eventPromise.$object;
@@ -58,12 +77,7 @@ angular.module('ieventsWebApp')
 
         $scope.startEvent = function () {
             Restangular.one('events', $scope.eventId).put({started: false}).then(function () {
-                $scope.event.status = {name: 'ongoing', class: 'success', ongoing: true};
-                /* global io: false */
-                var eventSocket = io.connect('http://interactive-events.elasticbeanstalk.com/events/' + $scope.eventId);
-                eventSocket.on('new-participant', function () {
-                    $scope.event.currentParticipants.push({});
-                });
+                setupOngoingEvent();
             }, function () {
                 console.log('Error starting event');
             });

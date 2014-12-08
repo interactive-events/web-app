@@ -70,7 +70,7 @@ angular.module('ieventsWebApp')
             }
 
             /* global io: false */
-            var socket = io.connect('http://interactive-events.elasticbeanstalk.com/events/' + $stateParams.eventId);
+            var socket = io.connect(Restangular.configuration.baseUrl+'/events/' + $stateParams.eventId);
 
             socket.on('vote', function (vote) {
                 angular.forEach($scope.activity.pollResults.votes, function (value, index) {
