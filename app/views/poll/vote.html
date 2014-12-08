@@ -2,14 +2,17 @@
 	<h1>{{ activity.customData.pollDescription.question }}</h1>
 
 	<form cass="vote-form" novalidate ng-submit="submitVote(vote)" ng-if="!voteRegisterd">
-		<div class="form-group" ng-repeat="answer in activity.customData.pollDescription.answers" >
-            <div class="radio">
-				<label for="vote_{{ activity.customData.pollDescription.answers[$index].id }}">
-					<input type="radio" name="voteGroup" ng-model="$parent.vote" id="vote_{{ activity.customData.pollDescription.answers[$index].id }}" value="{{ activity.customData.pollDescription.answers[$index].id }}" />
-					{{ activity.customData.pollDescription.answers[$index].answer }} 
-				</label>
-		    </div>
-		</div>
+        <div class="answers">
+            <div class="form-group" ng-repeat="answer in activity.customData.pollDescription.answers">
+                <div class="radio">
+                    <label for="vote_{{ activity.customData.pollDescription.answers[$index].id }}">
+                        <input type="radio" name="voteGroup" ng-model="$parent.vote" id="vote_{{ activity.customData.pollDescription.answers[$index].id }}"
+                               value="{{ activity.customData.pollDescription.answers[$index].id }}"/>
+                        {{ activity.customData.pollDescription.answers[$index].answer }}
+                    </label>
+                </div>
+            </div>
+        </div>
 	    <div class="form-group">
 	        <input type="submit" value="Vote" class="btn btn-primary input-lg form-control"/>
 	    </div>
