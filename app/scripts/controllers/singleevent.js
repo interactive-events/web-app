@@ -93,8 +93,8 @@ angular.module('ieventsWebApp')
                 var xhr = new XMLHttpRequest();
                 xhr.open('GET', bitlyAPIUrl + encodeURIComponent(urlToShorten));
                 xhr.onreadystatechange = function () {
-                    if (xhr.readyState == 4) {
-                        if (xhr.status == 200) {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
                             console.log('Generated public link: ', xhr.responseText);
                             $scope.publicLinkGenerated = true;
                             $scope.publicLink = JSON.parse(xhr.responseText).data.url;
