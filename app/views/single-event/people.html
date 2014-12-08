@@ -1,26 +1,26 @@
-<h3>Invited people</h3>
-<table class="table" style="position: relative;">
-    <thead>
-    <tr>
-        <th>id</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="user in event.invitedUsers">
-        <td>{{user}}</td>
-    </tr>
-    </tbody>
-</table>
 <h3>Current participants</h3>
 <table class="table" style="position: relative;">
     <thead>
     <tr>
-        <th>id</th>
+        <th>Name</th>
     </tr>
     </thead>
     <tbody>
     <tr ng-repeat="user in event.currentParticipants">
-        <td>{{user}}</td>
+        <td>{{user.name}}</td>
     </tr>
     </tbody>
+</table>
+<h3>Invited people</h3>
+<table class="table" style="position: relative;">
+  <thead>
+  <tr>
+    <th>Name</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="user in event.invitedUsers">
+    <td>{{user.name}}</td>
+  </tr>
+  </tbody>
 </table>
