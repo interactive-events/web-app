@@ -8,7 +8,7 @@
  * Controller of the ieventsWebApp
  */
 angular.module('ieventsWebApp')
-  .controller('VoteCtrl', function ($scope, Restangular, $stateParams, $state, $timeout, $location) {
+  .controller('VoteCtrl', function ($scope, Restangular, $stateParams, $state, $timeout, $location, $http) {
 
         var accessToken = ($location.search()).access_token;
         console.log('access_token is:', accessToken);
