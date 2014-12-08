@@ -24,3 +24,8 @@ body.presenterMode {
   bottom: 100px;
   position: fixed;
 }
+
+.container.vote {
+  &.show { display: block;}
+  display: none;
+}

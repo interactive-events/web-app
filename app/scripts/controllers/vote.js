@@ -8,7 +8,9 @@
  * Controller of the ieventsWebApp
  */
 angular.module('ieventsWebApp')
-  .controller('VoteCtrl', function ($scope, Restangular, $stateParams, $state, $timeout, $location, $http) {
+  .controller('VoteCtrl', function ($scope, $rootScope, Restangular, $stateParams, $state, $timeout, $location, $http) {
+
+        $rootScope.showHeader = false;
 
         var accessToken = ($location.search()).access_token;
         console.log('access_token is:', accessToken);
@@ -22,6 +24,8 @@ angular.module('ieventsWebApp')
       if (data.customData.hasVoted === true) {
         // user already voted in this poll - go to results-view
         $state.go('view-activity.results');
+      } else {
+          $scope.showUI = true;
       }
     });
 

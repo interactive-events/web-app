@@ -12,7 +12,7 @@
 angular.module('ieventsWebApp')
     .controller('ViewPollCtrl', function ($scope, $rootScope, $state, $stateParams, Restangular) {
 
-        $rootScope.showHeader = true;
+        $rootScope.showHeader = false;
         $scope.pollLoaded = false;
 
         $scope.activityPromise = Restangular.one('events', $stateParams.eventId).one('activities', $stateParams.activityId).get();
