@@ -88,7 +88,9 @@ angular.module('ieventsWebApp')
             nsp.on('vote', function () {
                 console.log('left');
             });
+            // this is not a commentssdfsf
 
+            
             $scope.pollChart = {
                 title: {
                     text: $scope.activity.pollDescription.question,
