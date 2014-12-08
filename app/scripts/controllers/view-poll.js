@@ -148,7 +148,7 @@ angular.module('ieventsWebApp')
                 $scope.activity = data.customData;
                 populateData();
             });
-        }, 1000);
+        }, 3000);
 
         $scope.stopInterval = function () {
             /* global angular: false */
