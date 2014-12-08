@@ -42,13 +42,10 @@ angular.module('ieventsWebApp')
             $scope.event.status = {name: 'ongoing', class: 'success', ongoing: true};
             /* global io: false */
             var eventSocket = io.connect(Restangular.configuration.baseUrl+'/events/' + $scope.eventId);
-            console.log("namespace started");
             eventSocket.on('new-participant', function (data) {
                 console.log("new-participant!", data, $scope.event.currentParticipants, $scope.event.currentParticipants.indexOf(data.userId));
                 if($scope.event.currentParticipants.indexOf(data.userId) < 0) {
-                    console.log("new-participant added", data.userId);
                     $scope.event.currentParticipants.push(data.userId);
-                    console.log("added? ", $scope.event.currentParticipants);
                     $scope.$apply();
                 }
             });
@@ -60,7 +57,7 @@ angular.module('ieventsWebApp')
         $scope.openPresenterView = function () {
             var left = screen.width / 2 - 200,
                 top = screen.height / 2 - 250,
-                width = 800,
+                width = 600,
                 height = 600,
                 url = '/events/' + $scope.eventId + '/presenter/list';
             $window.open(url, '', 'top=' + top + ',left=' + left + ',width=' + width + ',height=' + height);
