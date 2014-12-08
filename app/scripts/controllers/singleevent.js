@@ -43,7 +43,7 @@ angular.module('ieventsWebApp')
             /* global io: false */
             var eventSocket = io.connect(Restangular.configuration.baseUrl+'/events/' + $scope.eventId);
             eventSocket.on('new-participant', function (data) {
-                console.log("new-participant!", data, $scope.event.currentParticipants, $scope.event.currentParticipants.indexOf(data.userId));
+                console.log('new-participant!', data, $scope.event.currentParticipants, $scope.event.currentParticipants.indexOf(data.userId));
                 if($scope.event.currentParticipants.indexOf(data.userId) < 0) {
                     $scope.event.currentParticipants.push(data.userId);
                     $scope.$apply();
