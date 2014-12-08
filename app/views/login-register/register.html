@@ -6,8 +6,8 @@
             </header>
             <form cass="register-form" ng-submit="registerSubmit(name,email,password)" novalidate>
                 <div class="form-group">
-                    <label for="email">Name</label>
-                    <input id="email" class="form-control input-lg name" ng-model="name" name="name" ng-required placeholder="Your name" type="text"/>
+                    <label for="email">Full name</label>
+                    <input id="email" class="form-control input-lg name" ng-model="name" name="name" ng-required placeholder="Your full name" type="text"/>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -16,7 +16,7 @@
                 </div>
                 <div class="form-group">
                     <label for="email">Password</label>
-                    <input id="email" class="form-control input-lg password" ng-model="password" ng-required type="password" name="password"/>
+                    <input id="email" class="form-control input-lg password" ng-model="password" ng-required type="password" name="password" ng-required placeholder="Your password" />
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Register" class="btn btn-primary input-lg form-control"/>

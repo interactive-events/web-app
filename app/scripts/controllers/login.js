@@ -8,72 +8,73 @@
  * Controller of the ieventsWebApp
  */
 angular.module('ieventsWebApp')
-    .controller('LoginCtrl', function ($scope, $rootScope, $state, Restangular, $cookieStore, principal) {
-        $rootScope.wrongCredentials = false;
+  .controller('LoginCtrl', function ($scope, $rootScope, $state, Restangular, $cookieStore, principal) {
+    $rootScope.wrongCredentials = false;
 
-        if (principal.isAuthenticated()) {
-            if ($rootScope.returnToState) {
-                $state.go($rootScope.returnToState, $rootScope.returnToStateParams);
-            } else {
-                $state.go('app.admin.dashboard');
-            }
+    if (principal.isAuthenticated()) {
+      if ($rootScope.returnToState) {
+        $state.go($rootScope.returnToState, $rootScope.returnToStateParams);
+      } else {
+        $state.go('app.admin.dashboard');
+      }
+    }
+
+    $scope.loginFormSubmit = function (email, password) {
+      var token = Restangular.all('oauth/token');
+
+      var tokenRequest = {
+        grant_type: 'password',
+        client_id: $rootScope.clientId,
+        client_secret: $rootScope.clientSecret,
+        username: email,
+        password: password
+      };
+      $scope.loginPromise = token.post(tokenRequest);
+      $scope.loginPromise.then(function (tokenResponse) {
+        // Success
+        $scope.wrongCredentials = false;
+        // Create user object and store it in cookie
+        var userObj = {
+          id: tokenResponse.user_id,
+          name: tokenResponse.user_name,
+          username: email,
+          roles: ['admin'],
+          accessToken: tokenResponse.access_token,
+          refreshToken: tokenResponse.refresh_token
+        };
+        console.log(userObj);
+
+        principal.authenticate(userObj);
+        $rootScope.user = userObj;
+
+        // If the user was somewhere, send them back there, now authenticated.
+        if ($rootScope.returnToState) {
+          $state.go($rootScope.returnToState, $rootScope.returnToStateParams);
+        } else {
+          // Send user to initial screen
+          // TODO This state can maybe be loaded from user settings.
+          $state.go('app.admin.dashboard');
         }
 
-        $scope.loginFormSubmit = function (email, password) {
-            var token = Restangular.all('oauth/token');
+      }, function () {
+        // Error
+        $scope.wrongCredentials = true;
+        $rootScope.notAuthorized = false;
+      });
+    };
 
-            var tokenRequest = {
-                grant_type: 'password',
-                client_id: $rootScope.clientId,
-                client_secret: $rootScope.clientSecret,
-                username: email,
-                password: password
-            };
-            $scope.loginPromise = token.post(tokenRequest);
-                $scope.loginPromise.then(function (tokenResponse) {
-                // Success
-                $scope.wrongCredentials = false;
-                // Create user object and store it in cookie
-                var userObj = {
-                    id: tokenResponse.user_id,
-                    name: tokenResponse.user_name,
-                    username: email,
-                    roles: ['admin'],
-                    accessToken: tokenResponse.access_token,
-                    refreshToken: tokenResponse.refresh_token
-                };
-                console.log(userObj);
-
-                principal.authenticate(userObj);
-
-                // If the user was somewhere, send them back there, now authenticated.
-                if ($rootScope.returnToState) {
-                    $state.go($rootScope.returnToState, $rootScope.returnToStateParams);
-                } else {
-                    // Send user to initial screen
-                    // TODO This state can maybe be loaded from user settings.
-                    $state.go('app.admin.dashboard');
-                }
-
-            }, function () {
-                // Error
-                $scope.wrongCredentials = true;
-                $rootScope.notAuthorized = false;
-            });
-        };
-
-        // Reset
-        $scope.$on('$destroy', function () {
-            $scope.wrongCredentials = false;
-            $rootScope.notAuthorized = false;
-            $rootScope.returnToState = null;
-            $rootScope.returnToStateParams = null;
-        });
-
-        $('#username, #password').bind('keydown', function () {
-            $scope.wrongCredentials = false;
-        });
+    // Reset
+    $scope.$on('$destroy', function () {
+      $scope.wrongCredentials = false;
+      $rootScope.notAuthorized = false;
+      $rootScope.returnToState = null;
+      $rootScope.returnToStateParams = null;
     });
+
+    $('#username, #password').bind('keydown', function () {
+      $scope.wrongCredentials = false;
+    });
+  });
 
 // T
 /*angular.module('ieventsWebApp').
