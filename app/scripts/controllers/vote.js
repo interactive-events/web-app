@@ -8,7 +8,7 @@
  * Controller of the ieventsWebApp
  */
 angular.module('ieventsWebApp')
-  .controller('VoteCtrl', function ($scope, $rootScope, Restangular, $stateParams, $state, $timeout, $location, $http) {
+  .controller('VoteCtrl', function ($scope, $rootScope, Restangular, $stateParams, $state, $timeout, $location, $http, $cookieStore, $cookies) {
 
         $rootScope.showHeader = false;
 
@@ -22,8 +22,8 @@ angular.module('ieventsWebApp')
       //TODO Vote or redirect to results
       $scope.activity = data;
 
-
-      if ((data.customData.hasVoted === true) || ($cookieStore.get('hasVoted'))) {
+    console.log('cookies:', $cookies.hasVoted);
+      if ((data.customData.hasVoted === true) || ($cookies.hasVoted)) {
         // user already voted in this poll - go to results-view
         $state.go('view-activity.results');
       } else {
@@ -39,7 +39,8 @@ angular.module('ieventsWebApp')
 
       var vote = {answerId: answerId};
       baseActivity.all('vote').post(vote).then(function (result) {
-        $cookieStore.set('hasVoted');
+        $cookieStore.put('hasVoted', true);
+        $cookies.hasVoted = true;
         $scope.voteRegistered = true;
         $timeout($scope.goToResults(), 2000);
         console.log(result);
