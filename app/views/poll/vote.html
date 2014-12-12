@@ -2,6 +2,7 @@
 	<h1>{{ activity.customData.pollDescription.question }}</h1>
 
 	<form cass="vote-form" novalidate ng-submit="submitVote(vote)" ng-if="!voteRegisterd">
+        <div class="alert alert-danger" role="alert" ng-if="invalid">Please select an answer</div>
         <div class="answers">
             <div class="form-group" ng-repeat="answer in activity.customData.pollDescription.answers">
                 <div class="radio">

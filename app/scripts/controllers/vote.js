@@ -32,21 +32,23 @@ angular.module('ieventsWebApp')
         });
 
         $scope.submitVote = function (answerId) {
-
-            //var formData = new FormData();
-            //formData.append("answerId",angular.toJson(answerId));
-            //baseActivity.one('vote').withHttpConfig({ transformRequest: angular.identity }).customPUT("", null, { "Content-Type": undefined }, formData);
-
-            var vote = {answerId: answerId};
-            baseActivity.all('vote').post(vote).then(function (result) {
-                $cookieStore.put('hasVoted', true);
-                $cookies.hasVoted = true;
-                $scope.voteRegistered = true;
-                $timeout($scope.goToResults(), 2000);
-                console.log(result);
-            }, function (error) {
-                console.log(error);
-            });
+            if(answerId) {
+                var vote = {answerId: answerId};
+                baseActivity.all('vote').post(vote).then(function (result) {
+                    $cookieStore.put('hasVoted', true);
+                    $cookies.hasVoted = true;
+                    $scope.voteRegistered = true;
+                    $timeout($scope.goToResults(), 2000);
+                    console.log(result);
+                }, function (error) {
+                    console.log(error);
+                });
+            } else {
+                $scope.invalid = true;
+                $timeout(function(){
+                    $scope.invalid = false;
+                }, 4000);
+            }
         };
 
         $scope.goToResults = function () {
