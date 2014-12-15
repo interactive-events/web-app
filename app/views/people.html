@@ -14,11 +14,11 @@
         <thead>
         <tr>
             <th>Name</th>
-            <th>Username</th>
+            <th>Email</th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="obj in peopleResponse.users">
+        <tr ng-repeat="obj in peopleResponse.users" ng-if="obj.user.name != user.name && obj.user.username != 'VoteUser'">
             <td>{{obj.user.name}}</td>
             <td>{{obj.user.username}}</td>
         </tr>

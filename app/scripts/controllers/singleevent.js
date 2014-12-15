@@ -28,6 +28,10 @@ angular.module('ieventsWebApp')
                 $interval(updateProgress, 10000);
             } else {
                 $scope.event.status = {name: 'planned', class: 'default', ongoing: false};
+                var now = new Date().getTime();
+                if (new Date($scope.event.time.end).getTime() < now) {
+                    $scope.event.status = {name: 'ended', class: 'warning', ongoing: false};
+                }
             }
         });
 
@@ -44,8 +48,8 @@ angular.module('ieventsWebApp')
             var start = new Date($scope.event.time.start).getTime();
             var end = new Date($scope.event.time.end).getTime();
             var now = new Date().getTime();
-            if(!isStarted()) {
-                if(now > end) {
+            if (!isStarted()) {
+                if (now > end) {
                     $scope.event.completePercent = 100;
                 } else {
                     $scope.event.completePercent = 0;
@@ -60,9 +64,9 @@ angular.module('ieventsWebApp')
             /* global io: false */
             var eventSocket = io.connect(Restangular.configuration.baseUrl + '/events/' + $scope.eventId);
             eventSocket.on('new-participant', function (data) {
-                
+
                 console.log('new-participant!', data, $scope.event.currentParticipants, $scope.event.currentParticipants.indexOf(data.userId));
-                if($scope.event.currentParticipants.indexOf(data.userId) < 0) {
+                if ($scope.event.currentParticipants.indexOf(data.userId) < 0) {
                     $scope.event.currentParticipants.push(data.userId);
                     $scope.$apply();
                 }
@@ -75,7 +79,7 @@ angular.module('ieventsWebApp')
         $scope.openPresenterView = function () {
             var left = screen.width / 2 - 200,
                 top = screen.height / 2 - 250,
-                width = 600,
+                width = 780,
                 height = 600,
                 url = '/events/' + $scope.eventId + '/presenter/list';
             $window.open(url, '', 'top=' + top + ',left=' + left + ',width=' + width + ',height=' + height);

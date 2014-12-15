@@ -3,7 +3,11 @@
 
     <div class="panel panel-default" ng-repeat="activity in event.activities">
         <div class="panel-heading">
-            <h3 class="panel-title">{{ activity.name }} <span class="poll-status label label-default pull-right">not started</span></h3>
+            <h3 class="panel-title">{{ activity.name }}
+                <span ng-if="activity.state == 'planned'" class="pull-right poll-status label label-default">not started</span>
+                <span ng-if="activity.state == 'start'" class="pull-right poll-status label label-success">voting in progress</span>
+                <span ng-if="activity.state == 'ended'" class="pull-right poll-status label label-danger">ended</span>
+            </h3>
         </div>
         <div class="panel-body">
             <div class="row">

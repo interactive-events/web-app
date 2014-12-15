@@ -19,8 +19,8 @@
   </tr>
   </thead>
   <tbody>
-  <tr ng-repeat="user in event.invitedUsers">
-    <td>{{user.name}}</td>
+  <tr ng-repeat="usr in event.invitedUsers" ng-if="usr.name != user.name && usr.username != 'VoteUser'">
+    <td>{{usr.name}}</td>
   </tr>
   </tbody>
 </table>
