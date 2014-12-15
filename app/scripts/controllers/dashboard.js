@@ -19,8 +19,8 @@ angular.module('ieventsWebApp')
             'yAxis': {'title': { text: 'Attendees'}},
             'xAxis': {'title': { text: 'Week'},
               categories: [
-              '44',
               '45',
+              '46',
               '47',
               '48',
               '49',
@@ -36,8 +36,8 @@ angular.module('ieventsWebApp')
             'size': {'width': '', 'height': '300'},
             'xAxis': {'currentMin': null, allowDecimals: false, 'title': { text: 'Week'},
               categories: [
-                '44',
                 '45',
+                '46',
                 '47',
                 '48',
                 '49',
