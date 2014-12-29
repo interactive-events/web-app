@@ -10,6 +10,8 @@
     <!-- build:css(.) /styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/angular-busy/dist/angular-busy.css" />
+    <link rel="stylesheet" href="bower_components/angular-hotkeys/build/hotkeys.min.css" />
+    <link rel="stylesheet" href="bower_components/angular-motion/dist/angular-motion.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
@@ -22,7 +24,7 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <header class="main" ng-controller="HeaderCtrl">
+    <header class="main ng-cloak" ng-show="showHeader" ng-cloak ng-controller="HeaderCtrl">
         <div class="container">
             <div class="logo">
                 <a ui-sref="app.home">
@@ -30,19 +32,41 @@
                 </a>
             </div>
             <nav class="navbar navbar-default pull-left ng-cloak" role="navigation" ng-if="auth.isAuthenticated()">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li ui-sref-active="active"><a ui-sref="app.admin.dashboard">Dashboard</a></li>
-                    <li ui-sref-active="active"><a ui-sref="app.admin.events">Events</a></li>
+                    <li ng-class="{active:$state.includes('app.admin.events')}"><a ui-sref="app.admin.events.list">Events</a></li>
                     <li ui-sref-active="active"><a ui-sref="app.admin.people">People</a></li>
                     <li ui-sref-active="active"><a ui-sref="app.admin.beacons">Beacons</a></li>
                 </ul>
+                    </div>
             </nav>
             <div class="not-logged-in pull-right ng-cloak" ng-if="!auth.isAuthenticated()">
                 <button ui-sref="app.login" type="button" class="btn btn-default login-btn">Login</button>
                 <button ui-sref="app.register" type="button" class="btn btn-success">Register</button>
             </div>
             <div class="profile-info pull-right ng-cloak" ng-if="auth.isAuthenticated()">
-                <span class=" welcome">Welcome, Bob </span><a ng-click="logout()" class="btn btn-default login-btn">Logout</a>
+                <span class=" welcome" ng-if="user.name">Welcome, <span class="capitalize-first-letter">{{user.name}}</span> </span>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <span class="glyphicon glyphicon-user"></span> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a ui-sref="app.admin.dashboard">Dashboard</a></li>
+                        <li><a href="#">My profile</a></li>
+                        <li><a href="#">Settings</a></li>
+                        <li class="divider"></li>
+                        <li><a ng-click="logout()" href="">Logout</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </header>
@@ -67,7 +91,8 @@
     <![endif]-->
     <!-- endbuild -->
 
-    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script src="http://interactive-events.elasticbeanstalk.com/socket.io/socket.io.js"></script>
+    <!--<script src="http://server.raxo.se:8888/socket.io/socket.io.js"></script>-->
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -101,10 +126,12 @@
     <script src="bower_components/angular-busy/dist/angular-busy.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-socket-io/socket.js"></script>
+    <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
+    <script src="bower_components/angularjs-geolocation/src/geolocation.js"></script>
+    <script src="bower_components/angular-hotkeys/build/hotkeys.min.js"></script>
+    <script src="bower_components/angular-fullscreen/src/angular-fullscreen.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-
-    <script src="http://code.highcharts.com/highcharts-3d.js"></script>
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
@@ -119,6 +146,12 @@
         <script src="scripts/controllers/singleevent.js"></script>
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/register.js"></script>
+        <script src="scripts/controllers/poll.js"></script>
+        <script src="scripts/controllers/mapmodal.js"></script>
+        <script src="scripts/controllers/neweventaddactivitymodal.js"></script>
+        <script src="scripts/controllers/presentermode.js"></script>
+        <script src="scripts/controllers/view-poll.js"></script>
+        <script src="scripts/controllers/vote.js"></script>
         <!-- endbuild -->
 </body>
 </html>

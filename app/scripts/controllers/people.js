@@ -14,12 +14,9 @@ angular.module('ieventsWebApp')
             'AngularJS',
             'Karma'
         ];
-
-        Restangular.setBaseUrl('http://private-582d6-interactiveevents.apiary-mock.com');
-
         var basePeople = Restangular.one('users');
 
-        $scope.peoplePromise = basePeople.get();
+        $scope.peoplePromise = basePeople.get({limit: 100});
         $scope.peopleResponse = $scope.peoplePromise.$object;
 
     });

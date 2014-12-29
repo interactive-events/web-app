@@ -1,0 +1,23 @@
+<div class="row activity" ng-repeat="activity in event.activities">
+    <div class="col-xs-1">
+        <span class="module-icon glyphicon glyphicon-stats"></span>
+    </div>
+    <div class="col-xs-8">
+        <h3>{{ activity.name }}</h3>
+        <p><strong>Question: </strong>{{ activity.customData.pollDescription.question }}</p>
+        <p><strong>Status: </strong>
+            <span ng-if="activity.state == 'planned'" class="poll-status label label-default">not started</span>
+            <span ng-if="activity.state == 'start'" class="poll-status label label-success">voting started</span>
+        </p>
+    </div>
+    <div class="col-xs-3 text-right">
+        <p><a class="btn btn-primary" ng-click="startPoll(activity._id, $index)">Start poll</a></p>
+        <p><a class="btn btn-default" ng-click="getPublicLink(event.id, activity._id)">Get public link</a></p>
+        <p><a ng-href="{{ publicLink }}">{{ publicLink }}</a></p>
+    </div>
+    <hr/>
+</div>
+<div class="public-link" ng-if="publicLinkGenerated">
+    <a class="btn btn-default" ng-click="closePublicLink()"><span class="glyphicon glyphicon-remove"></span></a>
+    <a ng-href="{{ publicLink }}">{{ publicLink }}</a>
+</div>

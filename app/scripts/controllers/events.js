@@ -9,19 +9,6 @@
  */
 angular.module('ieventsWebApp')
     .controller('EventsCtrl', function ($scope, Restangular) {
-        Restangular.setBaseUrl('http://private-582d6-interactiveevents.apiary-mock.com');
-
-        var baseEvents = Restangular.one('events');
-
-        $scope.eventsPromise = baseEvents.get();
+        $scope.eventsPromise = Restangular.one('events').get({limit: 100});
         $scope.eventsResponse = $scope.eventsPromise.$object;
-
-        /*baseEvents.get().then(function(response) {
-         $scope.allEvents = response;
-         console.log(response);
-         });*/
-
-        //$scope.oneEvent = Restangular.one('events', '1');
-
-        // get events/id
     });

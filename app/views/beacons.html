@@ -12,16 +12,16 @@
 <table class="table" cg-busy="beaconsPromise">
     <thead>
     <tr>
-        <th>id</th>
         <th>Name</th>
-        <th>UUID</th>
+        <th>Major</th>
+        <th>Minor</th>
     </tr>
     </thead>
     <tbody>
     <tr ng-repeat="obj in beaconsResponse.beacons">
-        <td>{{obj.beacon.id}}</td>
-        <td>{{obj.beacon.name}}</td>
-        <td>{{obj.beacon.uuid}}</td>
+        <td>{{obj.beacon.description}}</td>
+        <td>{{obj.beacon.major}}</td>
+        <td>{{obj.beacon.minor}}</td>
     </tr>
     </tbody>
 </table>

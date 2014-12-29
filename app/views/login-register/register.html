@@ -1,20 +1,37 @@
 <div class="container">
     <div class="form-wrap narrow">
-        <header>
-            <h1>Register</h1>
-
-            <p class="text-center">Simply enter your email to register</p>
-        </header>
-        <form cass="register-form" novalidate>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input id="email" class="form-control input-lg username" ng-model="email" name="email" ng-required placeholder="Your email" type="text"
-                       name="email"/>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Register" class="btn btn-primary input-lg form-control"/>
-            </div>
-        </form>
-        <p class="text-center">Already have an account? <a ui-sref="app.login">Login here</a></p>
+        <div ng-if="!userCreated">
+            <header>
+                <h1>Register</h1>
+            </header>
+            <form cass="register-form" ng-submit="registerSubmit(name,email,password)" novalidate>
+                <div class="form-group">
+                    <label for="email">Full name</label>
+                    <input id="email" class="form-control input-lg name" ng-model="name" name="name" ng-required placeholder="Your full name" type="text"/>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input id="email" class="form-control input-lg username" ng-model="email" name="email" ng-required placeholder="Your email" type="text"
+                            />
+                </div>
+                <div class="form-group">
+                    <label for="email">Password</label>
+                    <input id="email" class="form-control input-lg password" ng-model="password" ng-required type="password" name="password" ng-required placeholder="Your password" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Register" class="btn btn-primary input-lg form-control"/>
+                </div>
+            </form>
+            <p class="text-center">Already have an account? <a ui-sref="app.login">Login here</a></p>
+        </div>
+    </div>
+    <div class="complete text-center" ng-if="userCreated">
+        <h1 class="text-center">Registration successful!</h1>
+        <div class="success-icon">
+            <span class="glyphicon glyphicon-ok"></span>
+        </div>
+        <p class="text-center">
+            <a class="btn btn-default" ui-sref="app.login">Login</a>
+        </p>
     </div>
 </div>

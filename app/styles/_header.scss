@@ -21,6 +21,9 @@ header.main {
   }
 
   .navbar { margin-bottom: 0; }
+  .navbar-collapse {
+    padding: 0;
+  }
 
   .welcome {
     line-height: 52px;
@@ -30,5 +33,12 @@ header.main {
 
   .not-logged-in {
     padding-top: 9px;
+  }
+
+  .capitalize-first-letter {
+    display: inline-block;
+  }
+  .capitalize-first-letter:first-letter {
+    text-transform: uppercase;
   }
 }

@@ -18,15 +18,109 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "section";
 @import "forms";
 @import "login";
+@import "modules";
 @import "dashboard";
 @import "events";
 @import "newEventWizard";
+@import "presenterMode";
 @import "misc";
 
-
 //TODO Move to separate typography file
-h1, h2, h3 h4, h5, h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: Lato;
   font-weight: bold;
   text-rendering: optimizeLegibility;
+}
+
+html { height: 100%; }
+
+.poll header.main {
+  display: none;
+}
+
+body.poll {
+  padding-top: 20px;
+}
+
+.navbar-toggle {
+  margin-left: 8px;
+}
+
+// Fix for inline form elements inside block form
+.form-inline .form-group {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.modal.fade:not(.in) .modal-dialog {
+  -webkit-transform: translate3d(0, 0, 0), transform3d;
+  transform: translate3d(0, 0, 0);
+}
+
+pre {
+  display: none !important;
+  margin-top: 10px;
+  text-align: left !important;
+}
+
+body.show-debug-info pre {
+  display: block !important;
+}
+
+.cfp-hotkeys-close {
+  line-height: 0.8;
+}
+
+.ng-hide {
+  opacity: 0;
+}
+
+.ng-hide-remove,
+.ng-hide-add {
+  display: block !important;
+}
+
+.ng-hide-remove {
+  transition: all ease 200ms;
+}
+
+.ng-hide-add {
+  transition: all ease 0ms;
+}
+
+/*
+[ui-view].ng-enter, [ui-view].ng-leave {
+  -webkit-transition:all .5s ease-in-out;
+  -moz-transition:all .5s ease-in-out;
+  -o-transition:all .5s ease-in-out;
+  transition:all .5s ease-in-out;
+}
+
+[ui-view].ng-enter {
+  opacity: 0;
+  transform:scale3d(0.95, 0.95, 0.5);
+}
+
+[ui-view].ng-enter-active {
+  opacity: 1;
+  transform:scale3d(1, 1, 1);
+}
+*/
+
+.public-link {
+  z-index: 200;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #FFF;
+  font-size: 96px;
+  text-align: center;
+  line-height: 400px;
+  .btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+  }
 }

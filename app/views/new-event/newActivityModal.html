@@ -1,0 +1,41 @@
+<div class="modal-header">
+    <h3 class="modal-title text-center">{{ modalTitle }}</h3>
+</div>
+<div class="modal-body">
+    <div ng-show="!activity" class="choose-activity-type">
+        <div class="row text-center">
+            <div class="col-xs-6">
+                <a class="btn btn-block btn-default activity-type-thumbnail" ng-click="selectModule()"><span class="module-icon glyphicon glyphicon-stats"></span><h3>Poll</h3></a>
+            </div>
+            <div class="col-xs-6">
+                <a class="btn btn-block btn-default activity-type-thumbnail"><span class="module-icon glyphicon glyphicon-th-list"></span><h3>Quiz</h3></a>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-xs-6">
+                <a class="btn btn-block btn-default activity-type-thumbnail"><span class="module-icon glyphicon glyphicon-user"></span><h3>Group assignment</h3></a>
+            </div>
+            <div class="col-xs-6">
+                <a class="btn btn-block btn-default activity-type-thumbnail"><span class="module-icon glyphicon glyphicon-comment"></span><h3>Questions</h3></a>
+            </div>
+        </div>
+    </div>
+    <div ng-show="activity" class="setup-activity">
+        <input class="form-control input-lg" ng-model="activity.customData.pollDescription.question" id="question" placeholder="Question" type="text"/>
+        <h3>Answers</h3>
+        <form class="form-horizontal" role="form">
+            <div class="form-group"  ng-repeat="question in activity.customData.pollDescription.answers">
+                <label for="answer{{ $index + 1}}" class="col-sm-2 control-label">Answer {{ $index + 1 }}</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" ng-model="activity.customData.pollDescription.answers[$index].answer" id="answer{{ $index + 1}}">
+                </div>
+            </div>
+        </form>
+        <a class="btn btn-info" ng-click="addAnswer()"><span class="glyphicon glyphicon-plus"></span></a>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" ng-click="ok()">Save</button>
+    <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+    <pre>{{ activity | json }}</pre>
+</div>

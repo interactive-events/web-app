@@ -1,8 +1,9 @@
-<div class="form-group">
-    <label for="beacon">Beacon for registering attendance</label>
-    <select id="beacon" ng-model="formData.beacon" class="form-control" ng-options="beacon.name for beacon in beacons">
-        <option value="">-- Choose a beacon --</option>
-    </select>
+<h3>Select participants</h3>
+<div class="checkbox" ng-repeat="obj in usersResponse.users">
+    <label>
+        <input type="checkbox" ng-model="selectedPeople[$index]" ng-change="selectPerson(obj.user)"/>
+        {{ obj.user.name }}
+    </label>
 </div>
-
-<button type="submit" class="btn btn-success pull-right">Save event</button>
+<a ui-sref="app.admin.events.new-event.step4" class="btn pull-right btn-primary">
+    Next <span class="glyphicon glyphicon-arrow-right"></span>

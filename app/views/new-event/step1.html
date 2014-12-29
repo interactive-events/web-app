@@ -1,6 +1,6 @@
 <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" name="name" class="form-control" id="name" ng-model="formData.name">
+    <label for="name">Title</label>
+    <input type="text" name="name" class="form-control" id="name" ng-model="formData.title">
 </div>
 
 <div class="form-group">
@@ -8,18 +8,44 @@
     <textarea name="description" class="form-control" id="description" ng-model="formData.description"></textarea>
 </div>
 <div class="form-group date-group">
-    <label for="date">Date & time</label>
+    <label for="date">Date</label>
 
     <div class="input-group date-group">
-        <input type="text" class="form-control" datepicker-popup="dd MMMM yyyy" id="date" ng-model="formData.date" is-open="opened" min-date="minDate" ng-required="true"
+        <input type="text" class="form-control" datepicker-popup="dd MMMM yyyy" id="date" name="date" ng-model="formData.time.date" is-open="opened"
+               min-date="minDate"
+               ng-required="true"
                close-text="Close"/>
-    <span class="input-group-btn">
-        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+        <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+    </div>
+</div>
+<div class="form-group time">
+    <div class="row">
+        <div class="col col-xs-2">
+            <label for="fromtime">Time:</label>
+        </div>
+        <div class="col col-xs-4">
+            <timepicker id="fromtime" ng-model="formData.time.start" hour-step="1" minute-step="5" show-meridian="false"></timepicker>
+        </div>
+        <div class="col col-xs-1">
+            <label for="totime">to</label>
+        </div>
+        <div class="col col-xs-4">
+            <timepicker ng-model="formData.time.end" hour-step="1" minute-step="5" show-meridian="false"></timepicker>
+        </div>
+    </div>
+</div>
+<div class="form-group location">
+    <label for="locationName">Location</label>
+
+    <div class="input-group">
+        <input type="text" id="locationName" name="locationName" class="form-control" id="name" ng-model="formData.location.name">
+                <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="openMapModal()"><i class="glyphicon glyphicon-map-marker"></i> Locate on map</button>
     </span>
     </div>
 </div>
-
-<a ui-sref="app.new-event.step2" class="btn pull-right btn-primary">
+<a ui-sref="app.admin.events.new-event.step2" class="btn pull-right btn-primary">
     Next <span class="glyphicon glyphicon-arrow-right"></span>
 </a>
-</div>

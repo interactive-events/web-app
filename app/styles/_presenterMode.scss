@@ -1,0 +1,45 @@
+body.presenterMode {
+  height: 100%;
+  padding-top: 70px;
+  header.main {
+    display: none;
+  }
+  .container {
+    max-width: 560px;
+  }
+}
+
+#pollChart {
+  height: 100%;
+}
+
+.presenterMode #pollChart {
+  margin-top: 46px;
+}
+
+.chart-container {
+  top: 46px;
+  left: 0;
+  right: 0;
+  bottom: 100px;
+  position: fixed;
+}
+
+.container.vote {
+  &.show { display: block;}
+  display: none;
+  max-width: 440px;
+
+  .radio {
+    font-size: 22px;
+    line-height: 22px;
+    padding-bottom: 7px;
+  }
+
+  .answers {
+    margin: 35px 0;
+  }
+  .btn-primary {
+    font-size: 19px;
+  }
+}

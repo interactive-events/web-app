@@ -11,19 +11,38 @@ angular.module('ieventsWebApp')
     .controller('DashboardCtrl', function ($scope) {
         $scope.chart1 = {
             'options': {'chart': {'type': 'areaspline'}, 'plotOptions': {'series': {'stacking': ''}}},
-            'series': [{'name': 'Weekly attendees', 'data': [1, 2, 4, 7, 3], 'id': 'series-0', 'type': 'areaspline'}],
+            'series': [{'name': 'Attendees per week', 'data': [1, 2, 4, 7, 3, 2], 'id': 'series-0', 'type': 'areaspline'}],
             'title': {'text': ''},
             'credits': {'enabled': false},
             'loading': false,
-            'size': {'height': '300'}
+            'size': {'height': '300'},
+            'yAxis': {'title': { text: 'Attendees'}},
+            'xAxis': {'title': { text: 'Week'},
+              categories: [
+              '45',
+              '46',
+              '47',
+              '48',
+              '49',
+              '50' ]
+            }
         };
         $scope.chart2 = {
             'options': {'chart': {'type': 'areaspline'}, 'plotOptions': {'series': {'stacking': ''}}},
-            'series': [{'name': 'Average event rating', 'data': [17, 2, 14, 8, 18, 14, 10, 5, 5, 9], 'id': 'series-7'}],
+            'series': [{'name': 'Rating average of events per week', 'data': [4, 4, 5, 8, 5, 4 ], 'id': 'series-7'}],
             'title': {'text': ''},
             'credits': {'enabled': false},
             'loading': false,
             'size': {'width': '', 'height': '300'},
-            'xAxis': {'currentMin': null}
+            'xAxis': {'currentMin': null, allowDecimals: false, 'title': { text: 'Week'},
+              categories: [
+                '45',
+                '46',
+                '47',
+                '48',
+                '49',
+                '50' ]
+            },
+            'yAxis': {'title': { text: 'Rating average'}, allowDecimals: false}
         };
     });

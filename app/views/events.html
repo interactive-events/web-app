@@ -1,10 +1,10 @@
 <div class="container">
     <header class="section">
         <h1>Events</h1>
-        <span class="ongoing-event"><span>1 event in progress: An awesome event</span> <a ng-href="/events/123">Go to event</a></span>
+        <!--<span class="ongoing-event"><span>1 event in progress: An awesome event</span> <a ng-href="/events/123/">Go to event</a></span>-->
 
         <div class="actions">
-            <a ui-sref="app.admin.new-event.step1" class="btn btn-success add">New event</a>
+            <a ui-sref="app.admin.events.new-event.step1" class="btn btn-success add">New event</a>
 
             <div class="btn-group">
                 <button type="button" class="btn btn-default">Upcoming</button>
@@ -15,20 +15,18 @@
     <table class="table" cg-busy="eventsPromise">
         <thead>
         <tr>
-            <th>id</th>
-            <th>Tittle</th>
-            <th>Start time</th>
+            <th>Title</th>
             <th>Date</th>
-            <th>Public</th>
+            <th>Starts</th>
+            <th>Location</th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="obj in eventsResponse.events">
-            <td>{{obj.event.id}}</td>
-            <td>{{obj.event.title}}</td>
-            <td>{{obj.event.startTime}}</td>
-            <td>{{obj.event.date}}</td>
-            <td>{{obj.event.public}}</td>
+            <td><a ui-sref="app.admin.events.single-event.activities({eventId:obj.event.id})">{{obj.event.title}}</a></td>
+            <td>{{obj.event.time.start | date:mediumDate}}</td>
+            <td>{{obj.event.time.start | date:'HH:mm'}}</td>
+            <td>{{obj.event.location.name}}</td>
         </tr>
         </tbody>
     </table>

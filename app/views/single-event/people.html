@@ -1,0 +1,26 @@
+<h3>Current participants</h3>
+<table class="table" style="position: relative;">
+    <thead>
+    <tr>
+        <th>Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="user in event.currentParticipants">
+        <td>{{user.name}}</td>
+    </tr>
+    </tbody>
+</table>
+<h3>Invited people</h3>
+<table class="table" style="position: relative;">
+  <thead>
+  <tr>
+    <th>Name</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="usr in event.invitedUsers" ng-if="usr.name != user.name && usr.username != 'VoteUser'">
+    <td>{{usr.name}}</td>
+  </tr>
+  </tbody>
+</table>

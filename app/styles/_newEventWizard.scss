@@ -1,17 +1,92 @@
 .new-event-wizard {
   .date-group {
     position: relative;
+    margin-bottom: 5px;
   }
+  .pagination {
+    margin: 0;
+  }
+
+  &.form-wrap header {
+    margin-bottom: 0;
+  }
+
+  .time {
+    margin-bottom: 5px;
+    .row {
+      margin: 0;
+    }
+    label {
+      line-height: 97px;
+    }
+
+    .col {
+      padding: 0;
+    }
+    .col-xs-2 {
+      margin-right: -19px;
+    }
+
+    .col-xs-4 {
+      margin-right: -22px;
+
+    }
+    .col-xs-1 {
+      margin-right: -8px;
+    }
+  }
+}
+
+.map-modal.modal-body {
+  padding: 0;
 }
 
 #signup-form {
   position: relative;
   min-height: 300px;
-  overflow: hidden;
   padding: 30px;
   transition: height 0.3s ease;
+  margin-bottom: 50px;
 }
-#form-views             { width:auto; }
+
+#form-views {
+  width: auto;
+}
+
+.angular-google-map-container {
+  height: 400px;
+}
+
+.choose-activity-type {
+  padding: 15px;
+
+  .row:first-child {
+    margin-bottom: 30px;
+  }
+
+  .btn {
+    padding: 25px;
+    h3 {
+      margin: 5px 0 0;
+    }
+  }
+
+}
+
+.success-icon {
+  margin: 20px auto;
+  width: 100px;
+  height: 100px;
+  background-color: $cs-green;
+  border-radius: 110px;
+  padding: 15px;
+
+  .glyphicon {
+    font-size: 55px;
+    line-height: 68px;
+    color: #fff;
+  }
+}
 
 // TODO Fix sliding animations
 /*
@@ -32,7 +107,6 @@
   animation:slideOutLeft 0.5s both ease;
 }
 */
-
 
 /* ANIMATIONS,
 ============================================================================= */

@@ -49,6 +49,57 @@ header.section {
   }
 }
 
+.event-stats {
+  min-height: 108px;
+  text-align: center;
+  span {
+    font-size: 42px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .progress {
+    margin-bottom: 0;
+    background-color: #fff;
+  }
+}
+
+/* /events/5639s90sbadbab */
+.single-event {
+  .nav-tabs {
+    h4 {
+      margin: 0;
+    }
+    .glyphicon {
+      top: 2px;
+    }
+  }
+  .tab-content {
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    h3 {
+      margin-top: 0;
+    }
+    .table:last-child {
+      margin-bottom: 0;
+    }
+
+    .event-info {
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
+    .activity:not(:last-child) {
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+  }
+}
+
 @keyframes shine {
   0% {
     left: -45%;

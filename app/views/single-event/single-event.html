@@ -1,0 +1,92 @@
+<div class="container">
+    <header class="section">
+        <h1 ng-show="loaded">{{ event.title }}</h1>
+
+        <div class="actions btn-toolbar">
+            <a ng-click="startEvent()" ng-if="!event.status.ongoing" class="btn btn-success"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                Start now</a>
+            <a ng-click="openPresenterView()" class="btn btn-primary"><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> Presenter mode</a>
+            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> Edit event</a>
+        </div>
+    </header>
+    <div class="main-content row" cg-busy="eventPromise">
+        <div class="col-md-9 col-md-push-3">
+            <div class="well well-sm event-stats">
+                <div class="row" ng-show="loaded">
+                    <div class="col-xs-3">
+                        <span>
+                            {{ event.currentParticipants.length }}
+                        </span>
+                        <ng-pluralize count="event.currentParticipants.length"
+                                      when="{'0': 'Nobody is attending', 'one': 'person is attending', 'other':'people are attending.'}"></ng-pluralize>
+                    </div>
+                    <div class="col-xs-3">
+                        <span>
+                            {{ event.invitedUsers.length }}
+                        </span>
+                        <ng-pluralize count="event.invitedUsers.length"
+                                      when="{'0': 'Nobody is invited', 'one': 'person is invited', 'other':'people are invited.'}"></ng-pluralize>
+                    </div>
+                    <div class="col-xs-3">
+                        <span>
+                            {{ event.activities.length }}
+                        </span>
+                        <ng-pluralize count="event.activities.length"
+                                      when="{'0': 'activities planned', 'one': 'activity planned', 'other':'activities planned'}"></ng-pluralize>
+                    </div>
+                    <div class="col-xs-3">
+                        <span>
+                            {{ event.completePercent }}%
+                        </span>
+
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="{{ event.completePercent }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ event.completePercent }}%;">
+                                Completed
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="nav nav-tabs nav-justified">
+                <li ui-sref-active="active" role="presentation" class="active"><a ui-sref="app.admin.events.single-event.activities"><h4><span
+                        class="glyphicon glyphicon-th-list"></span> Activities</h4></a></li>
+                <li ui-sref-active="active" role="presentation"><a ui-sref="app.admin.events.single-event.people"><h4><span
+                        class="glyphicon glyphicon-user"></span> People</h4></a>
+                </li>
+                <li ui-sref-active="active" role="presentation"><a ui-sref="app.admin.events.single-event.beacons"><h4><span
+                        class="glyphicon glyphicon-map-marker"></span> Beacons</h4>
+                </a></li>
+                <li ui-sref-active="active" role="presentation"><a ui-sref="app.admin.events.single-event.settings"><h4><span
+                        class="glyphicon glyphicon-cog"></span> Settings</h4></a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <ui-view ng-show="loaded"/>
+            </div>
+        </div>
+        <div class="col-md-3 col-md-pull-9">
+            <div class="panel panel-default event-info">
+                <!-- Default panel contents -->
+                <div class="panel-heading"><strong>Description</strong></div>
+                <div class="panel-body">
+                    <p ng-show="loaded">{{event.description}}</p>
+                </div>
+
+                <!-- List group -->
+                <ul class="list-group" ng-show="loaded">
+                    <li class="list-group-item"><span class="glyphicon glyphicon-info-sign"></span><strong> Status: </strong><span
+                            class="label label-{{event.status.class}}">{{ event.status.name }}</span>
+                    </li>
+                    <li class="list-group-item"><span class="glyphicon glyphicon-calendar"></span><strong> Date: </strong>{{event.time.start | date:mediumDate
+                        }}
+                    </li>
+                    <li class="list-group-item"><span class="glyphicon glyphicon-time"></span><strong> Time: </strong>{{event.time.start | date:'HH:mm' }} -
+                        {{event.time.end | date:'HH:mm' }}
+                    </li>
+                    <li class="list-group-item"><span class="glyphicon glyphicon-map-marker"></span><strong> Location: </strong>{{ event.location.name }}</li>
+                    <li class="list-group-item"><span class="glyphicon glyphicon-lock"></span><strong> Type: </strong>private event</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
